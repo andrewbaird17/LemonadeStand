@@ -13,13 +13,15 @@ namespace LemonadeStandProject
         Inventory inventory;
         Wallet wallet;
         Recipe recipe;
-        Pitcher pithcer;
+        Pitcher pitcher;
 
         //Constructor
         Player()
         {
             wallet = new Wallet();
             recipe = new Recipe();
+            inventory = new Inventory();
+            pitcher = new Pitcher();
         }
         //Member Methods (CAN DO)
         public void ChooseYourUserName()
@@ -31,9 +33,14 @@ namespace LemonadeStandProject
         {
 
         }
+        public void CheckInventory()
+        {
+
+        }
         public void CreateNewPitcher()
         {
-            
+            for()
+            inventory.lemons
         }
     }
 }
