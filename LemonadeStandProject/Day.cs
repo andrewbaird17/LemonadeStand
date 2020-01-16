@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Day
+    public class Day
     {
         //Member Variables (HAS A)
         public Weather weather;
@@ -19,9 +19,9 @@ namespace LemonadeStandProject
         }
 
         //Member Methods (CAN DO)
-        public void SelectNumberDays()
+        public int SelectNumberDays()
         {
-            int numDays = 0;
+            int numDays;
             Console.WriteLine("How many days would you like to run your Lemonade Stand for?");
             string days = Console.ReadLine();
             Int32.TryParse(days, out numDays);
@@ -29,13 +29,11 @@ namespace LemonadeStandProject
             {
                 Console.WriteLine("Please try again. Your input is not a valid option. Minimum game length is 7 days.");
                 Console.ReadLine();
+                Console.Clear();
                 SelectNumberDays();
             }
-            else
-            {
-                Console.Clear();
-                // create a method in Game to initialize list of days and then fetech weather for those days
-            }
+            Console.Clear();
+            return numDays;
         }
     }
 }

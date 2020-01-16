@@ -39,8 +39,7 @@ namespace LemonadeStandProject
         }
         public void CreateNewPitcher()
         {
-            for()
-            inventory.lemons
+            
         }
     }
 }

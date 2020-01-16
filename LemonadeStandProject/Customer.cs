@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Customer
+    public class Customer
     {
         //Member Variables (HAS A)
         public string name;

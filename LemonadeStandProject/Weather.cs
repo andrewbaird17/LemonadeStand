@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Weather
+    public class Weather
     {
         //Member Variables (HAS A)
 
@@ -18,7 +18,7 @@ namespace LemonadeStandProject
         //Constructor
         public Weather()
         {
-            weatherConditions = new List<string>() { "Sunny", "Cloudy", "Rainy", "Overcast", "Windy", "Scattered Showers", "Hazy", "Foggy" };
+            weatherConditions = new List<string>() { "Sunny", "Cloudy", "Rainy", "Overcast", "Windy", "Scattered Showers", "Hazy", "Foggy"};
         }
         //Member Methods (CAN DO)
         public void RunWeatherSelection()
@@ -29,7 +29,7 @@ namespace LemonadeStandProject
         public void ChooseCondition()
         {
             Random random = new Random();
-            condition = weatherConditions[random.Next((weatherConditions.Count + 1))];
+            condition = weatherConditions[random.Next(weatherConditions.Count)];
         }
 
         public void ChooseTemp()
