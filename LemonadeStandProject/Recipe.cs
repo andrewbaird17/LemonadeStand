@@ -16,10 +16,10 @@ namespace LemonadeStandProject
         //Constructor
         public Recipe()
         {
-            int amountOfLemons = 4;
-            int amountOfSugarCubes = 4;
-            int amountOfIceCubes = 5;
-            double pricePerCup = 0.25;
+            amountOfLemons = 4;
+            amountOfSugarCubes = 4;
+            amountOfIceCubes = 5;
+            pricePerCup = 0.25;
         }
         //Member Methods (CAN DO)
         public void ChangeAmountOfLemonsInRecipe()

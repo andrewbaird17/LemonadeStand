@@ -9,12 +9,19 @@ namespace LemonadeStandProject
     public class Pitcher
     {
         //Member Variables (HAS A)
-        public int cupsLeftInPitcher;
+        public int cupsLeftInPitcher = 0;
 
         //Constructor
 
         //Member Methods (CAN DO)
-
+        public void FillUpLemonaidInPitcher()
+        {
+            cupsLeftInPitcher = 14;
+        }
+        public void PourGlassOfLemonaid()
+        {
+            cupsLeftInPitcher = -1;
+        }
 
     }
 }
