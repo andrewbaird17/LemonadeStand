@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Day
+    class Weather
     {
         //Member Variables (HAS A)
-        public Weather weather;
-        public List<Customer> customers;
+
         //Constructor
 
         //Member Methods (CAN DO)

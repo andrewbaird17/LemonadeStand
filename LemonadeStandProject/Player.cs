@@ -8,5 +8,12 @@ namespace LemonadeStandProject
 {
     class Player
     {
+        //Member Variables (HAS A)
+
+        //Constructor
+
+        //Member Methods (CAN DO)
+
+
     }
 }
