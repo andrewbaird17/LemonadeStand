@@ -54,7 +54,6 @@ namespace LemonadeStandProject
         }
         public void CreateNewPitcher()
         {
-<<<<<<< HEAD
             SubtractLemonsFromInventory();
             SubtractSugarCubesFromInventory();
             SubtractIceCubesFromInventory();
@@ -118,9 +117,6 @@ namespace LemonadeStandProject
             {
                 return enoughIceCubes = false;
             }
-=======
-            
->>>>>>> 8a82d3356dd8530188aa3ee6bf621076d7b31ec7
         }
     }
 }
