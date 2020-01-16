@@ -14,7 +14,6 @@ namespace LemonadeStandProject
         public int temperature;
         private List<string> weatherConditions;
         private List<string> conditionlist;
-        private List<int> templist;
         public string predictedForecast;
 
         //Constructor
