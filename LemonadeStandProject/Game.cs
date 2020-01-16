@@ -10,7 +10,7 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         Player player;
-        List<Day>days;
+        List<Day> days;
         int currentDay;
         //Constructor
 
@@ -20,5 +20,5 @@ namespace LemonadeStandProject
 
         }
 
-        }
+    }
 }
