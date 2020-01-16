@@ -9,9 +9,13 @@ namespace LemonadeStandProject
     class Customer
     {
         //Member Variables (HAS A)
+        public string name;
 
         //Constructor
+        public Customer()
+        {
 
+        }
         //Member Methods (CAN DO)
 
 
