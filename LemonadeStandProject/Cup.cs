@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Cup
+    public class Cup : Item
     {
+        //Member Variables (HAS A)
+        
+        //Constructor
+        Cup()
+        {
+            
+        }
+        //Member Methods (CAN DO)
+
+
     }
 }

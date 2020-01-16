@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class item
+   public abstract class Item
     {
+        //Member Variables (HAS A)
+        public string name;
+        //Constructor
+        public Item()
+        {
+
+        }
+        //Member Methods (CAN DO)
+
+
     }
 }

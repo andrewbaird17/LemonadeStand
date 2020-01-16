@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Pitcher
+    public class Pitcher
     {
+        //Member Variables (HAS A)
+        public int cupsLeftInPitcher;
+
+        //Constructor
+
+        //Member Methods (CAN DO)
+
+
     }
 }
