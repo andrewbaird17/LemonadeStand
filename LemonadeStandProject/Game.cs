@@ -10,15 +10,30 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         Player player;
-        List<Day>days;
+        List<Day> days;
         int currentDay;
         //Constructor
-
+        public Game()
+        {
+            days = new List<Day>();
+        }
         //Member Methods (CAN DO)
         public void Run()
         {
-
+            CreateLengthOfGame();    
         }
-
+        public void CreateLengthOfGame()
+        {
+            Day initday = new Day();
+            int numDays = initday.SelectNumberDays();
+            for (int i = 0; i < numDays; i++)
+            {
+                days.Add(new Day());
+                days[i].weather.ChooseCondition();
+                days[i].weather.ChooseTemp();
+                Console.WriteLine("Day " + (i + 1) + " is: " + (days[i].weather.condition) + " and has a high of " + (days[i].weather.temperature));
+            }
+            
         }
+    }
 }
