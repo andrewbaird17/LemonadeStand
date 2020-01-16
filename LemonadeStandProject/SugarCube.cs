@@ -13,7 +13,6 @@ namespace LemonadeStandProject
         //Constructor
 
         //Member Methods (CAN DO)
-
-
-        }
+        
+    }
 }

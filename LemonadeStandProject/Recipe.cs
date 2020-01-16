@@ -9,10 +9,10 @@ namespace LemonadeStandProject
     public class Recipe
     {
         //Member Variables (HAS A)
-        int amountOfLemons;
-        int amountOfSugarCubes;
-        int amountOfIceCubes;
-        double pricePerCup;
+        public int amountOfLemons;
+        public int amountOfSugarCubes;
+        public int amountOfIceCubes;
+        public double pricePerCup;
         //Constructor
         public Recipe()
         {
