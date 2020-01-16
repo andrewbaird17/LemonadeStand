@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    class Player
+    public class Player
     {
         //Member Variables (HAS A)
         string userName;
@@ -16,7 +16,7 @@ namespace LemonadeStandProject
         Pitcher pitcher;
 
         //Constructor
-        Player()
+        public Player()
         {
             wallet = new Wallet();
             recipe = new Recipe();
@@ -43,9 +43,9 @@ namespace LemonadeStandProject
             CheckForEnoughSugarCubes();
             CheckForEnoughIceCubes();
             if ((enoughLemons == true) & (enoughIceCubes == true) & (enoughSugarCubes == true))
-                    {
+            {
                 CreateNewPitcher();
-                    }
+            }
             else
             {
                 Console.WriteLine("You have run out of product!");
@@ -95,7 +95,7 @@ namespace LemonadeStandProject
         public bool CheckForEnoughSugarCubes()
         {
             bool enoughSugarCubes;
-            
+
             if (inventory.sugarCubes.Count() >= recipe.amountOfLemons)
             {
                 return enoughSugarCubes = true;

@@ -16,6 +16,7 @@ namespace LemonadeStandProject
         public Game()
         {
             days = new List<Day>();
+            player = new Player();
         }
         //Member Methods (CAN DO)
         public void Run()
@@ -34,6 +35,10 @@ namespace LemonadeStandProject
                 Console.WriteLine("Day " + (i + 1) + " is: " + (days[i].weather.condition) + " and has a high of " + (days[i].weather.temperature));
             }
             
+        }
+        public void CheckDay()
+        {
+        
         }
     }
 }
