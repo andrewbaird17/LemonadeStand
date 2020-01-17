@@ -13,6 +13,8 @@ namespace LemonadeStandProject
         public Hazy()
         {
             condition = "Hazy";
+            lowestNumCustomers = 50;
+            highestNumCustomers = 85;
         }
         //Member Methods (CAN DO)
     

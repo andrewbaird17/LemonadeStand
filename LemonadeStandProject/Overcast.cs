@@ -13,6 +13,8 @@ namespace LemonadeStandProject
         public Overcast()
         {
             condition = "Overcast";
+            lowestNumCustomers = 35;
+            highestNumCustomers = 55;
         }
         //Member Methods (CAN DO)
         

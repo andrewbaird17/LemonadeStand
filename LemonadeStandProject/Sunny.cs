@@ -14,6 +14,8 @@ namespace LemonadeStandProject
         public Sunny()
         {
             condition = "Sunny";
+            lowestNumCustomers = 75;
+            highestNumCustomers = 115;
         }
         //Member Methods (CAN DO)
         

@@ -13,6 +13,8 @@ namespace LemonadeStandProject
         public Rainy()
         {
             condition = "Rainy";
+            lowestNumCustomers = 20;
+            highestNumCustomers = 45;
         }
         //Member Methods (CAN DO)
       

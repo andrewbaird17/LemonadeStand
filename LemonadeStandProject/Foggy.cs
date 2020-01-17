@@ -14,8 +14,8 @@ namespace LemonadeStandProject
         public Foggy()
         {
             condition = "Foggy";
-            highestNumCustomers = 20;
-            lowestNumCustomers = 50;
+            lowestNumCustomers = 20;
+            highestNumCustomers = 45;
         }
         //Member Methods (CAN DO)
 

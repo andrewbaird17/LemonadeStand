@@ -59,7 +59,7 @@ namespace LemonadeStandProject
                 days.Add(new Day());
                 days[i].ChooseCondition();
                 days[i].ChooseTemp();
-                days[i].NumCustomers();
+                days[i].ChooseNumCustomers();
                 Console.Clear();
             }
         }

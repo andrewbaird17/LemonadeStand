@@ -28,7 +28,7 @@ namespace LemonadeStandProject
             Random random = new Random();
             currentWeather = weather.weatherConditions[random.Next(weather.weatherConditions.Count)];
         }
-        public void NumCustomers()
+        public void ChooseNumCustomers()
         {
             Random random = new Random();
             ChooseCondition();

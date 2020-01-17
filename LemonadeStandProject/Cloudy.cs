@@ -13,6 +13,8 @@ namespace LemonadeStandProject
         public Cloudy()
         {
             condition = "Cloudy";
+            lowestNumCustomers = 45;
+            highestNumCustomers = 85;
         }
         //Member Methods (CAN DO)
   
