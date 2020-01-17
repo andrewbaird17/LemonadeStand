@@ -6,18 +6,15 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class Cloudy : WeatherCondition
+    public class Cloudy : Weather
     {//Member Variables (HAS A)
 
         //Constructor
         public Cloudy()
         {
-
+            condition = "Cloudy";
         }
         //Member Methods (CAN DO)
-        public override void NumberCustomers()
-        {
-
-        }
+  
     }
 }

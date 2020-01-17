@@ -57,10 +57,10 @@ namespace LemonadeStandProject
             for (int i = 0; i < numberOfDays; i++)
             {
                 days.Add(new Day());
-                days[i].weather.ChooseCondition();
-                days[i].weather.ChooseTemp();
+                days[i].ChooseCondition();
+                days[i].ChooseTemp();
+                days[i].NumCustomers();
                 Console.Clear();
-                Console.WriteLine("Day " + (i + 1) + " is: " + (days[i].weather.condition) + " and has a high of " + (days[i].weather.temperature));
             }
         }
         public int SelectNumberDays()
