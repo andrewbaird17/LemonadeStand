@@ -10,34 +10,61 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         public Weather weather;
+        public int temperature;
         public List<Customer> customers;
         Random random;
+        public Weather currentWeather;
+        public int randcustomers;
+
 
         //Constructor
         public Day()
         {
             weather = new Weather();
         }
-
         //Member Methods (CAN DO)
-        public void NumberCustomersCurrentDay()
+        public void ChooseCondition()
         {
-            //Number of customers depends on weather condition for that day
-            // create a new list of customers for each new day
-            int numcustomers;
-            random = new Random();
-            if (weather.condition == "Sunny" || weather.condition == "Hazy")
+            Random random = new Random();
+            currentWeather = weather.weatherConditions[random.Next(weather.weatherConditions.Count)];
+        }
+        public void ChooseNumCustomers()
+        {
+            Random random = new Random();
+            ChooseCondition();
+            randcustomers = random.Next(currentWeather.highestNumCustomers, currentWeather.lowestNumCustomers);
+        }
+        public void ChooseTemp()
+        {
+            Random random = new Random();
+            temperature = random.Next(40, 115);
+        }
+        public void CreateCustomers()
+        {
+            for (int i = 0; i < randcustomers; i++)
             {
-                numcustomers = random.Next(60,110);
-            }
-            else
-            {
-                numcustomers = random.Next(40,70);
-            }
-            customers = new List<Customer>();
-            for (int i = 0; i < numcustomers; i++)
-            {
+                customers = new List<Customer>();
                 customers.Add(new Customer());
+                customers[i].name = "Customer" + String.Concat(i + 1);
+                customers[i].LikelihoodToBuy();
+            }
+        }
+        public void CustomerChanceBuy()
+        {
+            for (int i = 0; i < customers.Count; i++)
+            {
+                if (temperature >= 40 && temperature <= 60)
+                {
+                    customers[i].chanceToBuy -= 20;
+                }
+                else if (temperature > 60 && temperature <= 80)
+                {
+                    customers[i].chanceToBuy += 10;
+                }
+                else if (temperature > 80)
+                {
+                    customers[i].chanceToBuy += 20;
+                }
             }
         }
     }

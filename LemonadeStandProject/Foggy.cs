@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class Foggy : WeatherCondition
+    public class Foggy : Weather
     {
         //Member Variables (HAS A)
 
         //Constructor
         public Foggy()
         {
-
+            condition = "Foggy";
+            lowestNumCustomers = 20;
+            highestNumCustomers = 45;
         }
         //Member Methods (CAN DO)
+
     }
 }

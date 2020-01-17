@@ -10,20 +10,19 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         public string name;
-        
         public int chanceToBuy;
         Random random;
         //Constructor
         public Customer()
         {
-            
+           
         }
         //Member Methods (CAN DO)
         public void LikelihoodToBuy()
         {
-            // chanceToBuy depends on weather that day
+            // temperature determines the likelihood of those customers buying
             random = new Random();
-
+            chanceToBuy = random.Next(40, 80);
         }
 
     }

@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class Overcast : WeatherCondition
+    public class Overcast : Weather
     {//Member Variables (HAS A)
 
         //Constructor
         public Overcast()
         {
-
+            condition = "Overcast";
+            lowestNumCustomers = 35;
+            highestNumCustomers = 55;
         }
         //Member Methods (CAN DO)
+        
     }
 }

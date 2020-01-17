@@ -11,32 +11,23 @@ namespace LemonadeStandProject
         //Member Variables (HAS A)
 
         public string condition;
-        public int temperature;
-        private List<WeatherCondition> weatherConditions;
-        public string predictedForecast;
+        public List<Weather> weatherConditions = new List<Weather>();
+        public int highestNumCustomers;
+        public int lowestNumCustomers;
+
 
         //Constructor
         public Weather()
         {
-            weatherConditions = new List<WeatherCondition>() { } ;
+            weatherConditions.Add(new Foggy());
+            weatherConditions.Add(new Hazy());
+            weatherConditions.Add(new Windy());
+            weatherConditions.Add(new Cloudy());
+            weatherConditions.Add(new Rainy());
+            weatherConditions.Add(new Overcast());
+            weatherConditions.Add(new Sunny());
         }
         //Member Methods (CAN DO)
-        public void RunWeatherSelection()
-        {
-            ChooseCondition();
-            ChooseTemp();
-        }
-        public void ChooseCondition()
-        {
-            Random random = new Random();
-            condition = weatherConditions[random.Next(weatherConditions.Count)];
-        }
-        public void ChooseTemp()
-        {
-            Random random = new Random();
-            temperature = random.Next(40, 115);
-        }
-
     }
 }
 
