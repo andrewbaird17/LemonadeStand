@@ -9,58 +9,53 @@ namespace LemonadeStandProject
     public class Store
     {
         //Member Variables (HAS A)
-        double pricePerLemon;
-        double pricePerSugarCube;
-        double procePerIceCube;
-        double pricePerCup;
+        Inventory storeInventory;
+        public int numItems;
+        public double saleCost;
+
         //Constructor
         public Store()
         {
-            pricePerLemon = 0.25;
-            pricePerSugarCube = 0.01;
-            procePerIceCube = 0.01;
-            pricePerCup = 0.05;
+            storeInventory = new Inventory();   
         }
         //Member Methods (CAN DO)
 
         public void RunStore()
         {
-            MakePurchases();
+            NumberItemsToPurchase();
         }
-        public void MakePurchases()
+        public double SellLemons()
         {
-            Console.WriteLine("Welcome to The Store! What do you want to do?\n" +
-                                "1) Lemon\n2) SugarCube\n3) IceCube\n4) Cup\n5)Exit");
-            string selection = Console.ReadLine().ToLower();
-            do
-            {
-                switch (selection)
-                {
-                    case "1":
-                    case "lemon":
-                        break;
-                    case "2":
-                    case "sugarcube":
-                    case "sugar cube":
-                        break;
-                    case "3":
-                    case "icecube":
-                    case "ice cube":
-                        break;
-                    case "4":
-                    case "cup":
-                        break;
-                    case "5":
-                    case "exit":
-                        break;
-                    default:
-                        Console.WriteLine("Please enter a valid selection.");
-                        MakePurchases();
-                        break;
-                }
-            } while (selection != "exit");
-
+           NumberItemsToPurchase();
+           saleCost = storeInventory.lemon.purchasePrice*numItems;
+           return saleCost;
         }
 
+        public double SellSugar()
+        {
+            NumberItemsToPurchase();
+            saleCost = storeInventory.sugarcube.purchasePrice * numItems;
+            return saleCost;
+        }
+
+        public double SellIce()
+        {
+            NumberItemsToPurchase();
+            saleCost = storeInventory.icecube.purchasePrice * numItems;
+            return saleCost;
+        }
+        public double SellCups()
+        {
+            NumberItemsToPurchase();
+            saleCost = storeInventory.cup.purchasePrice * numItems;
+            return saleCost;
+        }
+        public void NumberItemsToPurchase()
+        {
+            Console.WriteLine("How many items do you want?");
+            string setnumItems = Console.ReadLine();
+            Int32.TryParse(setnumItems, out int numItems);
+            
+        }
     }
 }

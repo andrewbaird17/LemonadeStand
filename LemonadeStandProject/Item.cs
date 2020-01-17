@@ -10,6 +10,7 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         public string name;
+        public double purchasePrice;
         //Constructor
         public Item()
         {

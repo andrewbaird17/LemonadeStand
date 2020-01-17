@@ -6,18 +6,14 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class SugarCube : Item
+    static class UserInterface
     {
         //Member Variables (HAS A)
 
         //Constructor
-        public SugarCube()
-        {
-            name = "sugar cube";
-            purchasePrice = 0.01;
-        }
 
         //Member Methods (CAN DO)
-        
+       
+
     }
 }

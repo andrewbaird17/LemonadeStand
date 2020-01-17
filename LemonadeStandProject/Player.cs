@@ -9,11 +9,11 @@ namespace LemonadeStandProject
     public class Player
     {
         //Member Variables (HAS A)
-        string userName;
-        Inventory inventory;
-        Wallet wallet;
-        Recipe recipe;
-        Pitcher pitcher;
+        public string userName;
+        public Inventory inventory;
+        public Wallet wallet;
+        public Recipe recipe;
+        public Pitcher pitcher;
 
         //Constructor
         public Player()

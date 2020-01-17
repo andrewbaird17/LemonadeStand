@@ -12,11 +12,13 @@ namespace LemonadeStandProject
         Player player;
         List<Day> days;
         int currentDay;
+        Store store;
         //Constructor
         public Game()
         {
             days = new List<Day>();
             player = new Player();
+            store = new Store();
         }
         //Member Methods (CAN DO)
         public void Run()
@@ -35,9 +37,9 @@ namespace LemonadeStandProject
                 Console.WriteLine("Day " + (i + 1) + " is: " + (days[i].weather.condition) + " and has a high of " + (days[i].weather.temperature));
             }            
         }
-        public void CheckDay()
+        public void StorePurchase()
         {
-        
+            player.wallet.Money -= store.SellLemons(); 
         }
         
     }

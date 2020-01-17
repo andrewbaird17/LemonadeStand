@@ -11,7 +11,11 @@ namespace LemonadeStandProject
         //Member Variables (HAS A)
 
         //Constructor
-
+        public IceCube()
+        {
+            name = "ice cube";
+            purchasePrice = 0.01;
+        }
         //Member Methods (CAN DO)
 
 
