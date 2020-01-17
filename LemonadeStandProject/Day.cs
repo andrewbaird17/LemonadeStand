@@ -14,14 +14,14 @@ namespace LemonadeStandProject
         public List<Customer> customers;
         Random random;
         public Weather currentWeather;
-        
+        public int randcustomers;
+
 
         //Constructor
         public Day()
         {
             weather = new Weather();
         }
-
         //Member Methods (CAN DO)
         public void ChooseCondition()
         {
@@ -32,13 +32,40 @@ namespace LemonadeStandProject
         {
             Random random = new Random();
             ChooseCondition();
-            int randcustomers = random.Next(currentWeather.highestNumCustomers, currentWeather.lowestNumCustomers);
+            randcustomers = random.Next(currentWeather.highestNumCustomers, currentWeather.lowestNumCustomers);
         }
         public void ChooseTemp()
         {
             Random random = new Random();
             temperature = random.Next(40, 115);
         }
-
+        public void CreateCustomers()
+        {
+            for (int i = 0; i < randcustomers; i++)
+            {
+                customers = new List<Customer>();
+                customers.Add(new Customer());
+                customers[i].name = "Customer" + String.Concat(i + 1);
+                customers[i].LikelihoodToBuy();
+            }
+        }
+        public void CustomerChanceBuy()
+        {
+            for (int i = 0; i < customers.Count; i++)
+            {
+                if (temperature >= 40 && temperature <= 60)
+                {
+                    customers[i].chanceToBuy -= 20;
+                }
+                else if (temperature > 60 && temperature <= 80)
+                {
+                    customers[i].chanceToBuy += 10;
+                }
+                else if (temperature > 80)
+                {
+                    customers[i].chanceToBuy += 20;
+                }
+            }
+        }
     }
 }
