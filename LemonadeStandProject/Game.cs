@@ -20,10 +20,16 @@ namespace LemonadeStandProject
             store = new Store();
         }
         //Member Methods (CAN DO)
-        public void Run()
+        public void StartUp()
         {
             UserInterface.StartScreen();
             MainMenu();
+        }
+        public void RunGame()
+        {
+            CreateLengthOfGame();
+            //show user display
+            GoToTheStore(true);
         }
         public void MainMenu()
 
@@ -37,7 +43,7 @@ namespace LemonadeStandProject
                 case "start game":
                 case "game":
                     player.CheckInventory();
-                    CreateLengthOfGame();
+                    RunGame();
                     break;
                 case "2":
                 case "instructions":
@@ -61,12 +67,11 @@ namespace LemonadeStandProject
                 days[i].ChooseCondition();
                 days[i].ChooseTemp();
                 days[i].ChooseNumCustomers();
-                Console.Clear();
             }
         }
         public int SelectNumberDays()
         {
-            
+
             Console.WriteLine("How many days would you like to run your Lemonade Stand for?");
             Int32.TryParse(Console.ReadLine(), out int numberOfDays);
             if (numberOfDays < 7)
@@ -75,16 +80,93 @@ namespace LemonadeStandProject
                 Console.WriteLine("Please try again. Your input is not a valid option. Minimum game length is 7 days.\n\n");
                 SelectNumberDays();
             }
-                Console.Clear();
-                return numberOfDays;
+            Console.Clear();
+            return numberOfDays;
         }
-        public void GoToTheStore()
+        public void GoToTheStore(bool playerWantsToShop)
         {
+            double saleCost;
+            do
+            {
+                saleCost = Shopping();
+                CreditCheck(saleCost);
+                StorePurchase(saleCost);
+            } while (playerWantsToShop == true);
+        }
+        public double Shopping()
+        {
+            double saleCost;
+            Console.WriteLine("What would you like to buy:\n1. Lemons\n2. Sugar\n3. Cups \n4. Ice \n5. Exit back to ");
+            switch (Console.ReadLine().ToLower())
+            {
+                case "1":
+                case "lemons":
+                case "lemon":
+                    saleCost = store.SellLemons();
+                    return saleCost;
+                case "2":
+                case "sugar":
+                case "sugar cubes":
+                    saleCost = store.SellSugar();
+                    return saleCost;
+
+                case "3":
+                case "cups":
+                case "cup":
+                    saleCost = store.SellCups();
+                    return saleCost;
+
+                case "4":
+                case "ice":
+                    saleCost = store.SellIce();
+                    return saleCost;
+
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Try using just the number associated with the choice!");
+                    GoToTheStore(true);
+                    saleCost = 0;
+                    return saleCost;
+            }
 
         }
-        public void StorePurchase()
+        public void CreditCheck(double saleCost)
         {
-            player.wallet.Money -= store.SellLemons();
+            if (saleCost > player.wallet.Money)
+            {
+                Console.Clear();
+                Console.WriteLine("CARD DECLINED!\n\n");
+                ContinueShopping();
+            }
+
+        }
+        public void StorePurchase(double saleCost)
+        {
+            player.wallet.Money -= saleCost;
+            ContinueShopping();
+        }
+        public void ContinueShopping()
+        {
+            bool playerWantsToShop;
+            Console.WriteLine("Would you like to continue Shopping?\n1. Yes\n2. No");
+            switch (Console.ReadLine().ToLower())
+            {
+                case "1":
+                case "yes":
+                    playerWantsToShop = true;
+                    GoToTheStore(playerWantsToShop);
+                    break;
+                case "2":
+                case "no":
+                    playerWantsToShop = false;
+                    GoToTheStore(playerWantsToShop);
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Please try enetering only the number associated with your choice.");
+                    ContinueShopping();
+                    break;
+            }
         }
 
     }

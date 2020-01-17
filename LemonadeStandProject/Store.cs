@@ -8,54 +8,45 @@ namespace LemonadeStandProject
 {
     public class Store
     {
-        //Member Variables (HAS A)
+        //Member Variables (HAS A)       
         Inventory storeInventory;
-        public int numItems;
+        public int numberOfItems;
         public double saleCost;
-
         //Constructor
         public Store()
         {
-            storeInventory = new Inventory();   
+            storeInventory = new Inventory();
         }
         //Member Methods (CAN DO)
 
-        public void RunStore()
-        {
-            NumberItemsToPurchase();
-        }
         public double SellLemons()
         {
-           NumberItemsToPurchase();
-           saleCost = storeInventory.lemon.purchasePrice*numItems;
-           return saleCost;
+            NumberItemsToPurchase();
+            saleCost = storeInventory.lemon.purchasePrice * numberOfItems;
+            return saleCost;
         }
-
         public double SellSugar()
         {
             NumberItemsToPurchase();
-            saleCost = storeInventory.sugarcube.purchasePrice * numItems;
+            saleCost = storeInventory.sugarcube.purchasePrice * numberOfItems;
             return saleCost;
         }
-
         public double SellIce()
         {
             NumberItemsToPurchase();
-            saleCost = storeInventory.icecube.purchasePrice * numItems;
+            saleCost = storeInventory.icecube.purchasePrice * numberOfItems;
             return saleCost;
         }
         public double SellCups()
         {
             NumberItemsToPurchase();
-            saleCost = storeInventory.cup.purchasePrice * numItems;
+            saleCost = storeInventory.cup.purchasePrice * numberOfItems;
             return saleCost;
         }
         public void NumberItemsToPurchase()
         {
             Console.WriteLine("How many items do you want?");
-            string setnumItems = Console.ReadLine();
-            Int32.TryParse(setnumItems, out int numItems);
-            
+            Int32.TryParse(Console.ReadLine(), out numberOfItems);
         }
     }
 }
