@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class WeatherCondition
+    public abstract class WeatherCondition
     {
         //Member Variables (HAS A)
         public string condition;
-        public int temperature;
+        public int highestNumCustomers;
+        public int lowestNumCustomers;
         
 
         //Constructor
@@ -20,6 +21,7 @@ namespace LemonadeStandProject
         }
         //Member Methods (CAN DO)
 
+        public abstract void NumberCustomers();
 
     }
 }

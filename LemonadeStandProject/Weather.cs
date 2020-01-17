@@ -18,7 +18,7 @@ namespace LemonadeStandProject
         //Constructor
         public Weather()
         {
-            weatherConditions = new List<WeatherCondition>() { } ;
+            weatherConditions = new List<WeatherCondition>() {} ;
         }
         //Member Methods (CAN DO)
         public void RunWeatherSelection()
@@ -30,12 +30,6 @@ namespace LemonadeStandProject
         {
             Random random = new Random();
             condition = weatherConditions[random.Next(weatherConditions.Count)];
-        }
-
-        public void ChooseTemp()
-        {
-            Random random = new Random();
-            temperature = random.Next(40, 115);
         }
 
     }

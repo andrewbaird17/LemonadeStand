@@ -16,7 +16,7 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public void FillUpLemonaidInPitcher()
         {
-            c 
+             
         }
         public void PourGlassOfLemonaid()
         {

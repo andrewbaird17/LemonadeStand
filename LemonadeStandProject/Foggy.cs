@@ -16,5 +16,9 @@ namespace LemonadeStandProject
 
         }
         //Member Methods (CAN DO)
+        public override void NumberCustomers()
+        {
+
+        }
     }
 }

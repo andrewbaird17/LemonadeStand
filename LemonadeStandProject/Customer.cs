@@ -22,6 +22,8 @@ namespace LemonadeStandProject
         public void LikelihoodToBuy()
         {
             // chanceToBuy depends on weather that day
+            // condition sets a random amount of customers
+            // temperature determines the likelihood of those customers buying
             random = new Random();
 
         }
