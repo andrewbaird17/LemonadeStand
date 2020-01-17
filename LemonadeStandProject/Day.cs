@@ -20,23 +20,6 @@ namespace LemonadeStandProject
         }
 
         //Member Methods (CAN DO)
-        public int SelectNumberDays()
-        {
-            int numDays;
-            Console.WriteLine("How many days would you like to run your Lemonade Stand for?");
-            string days = Console.ReadLine();
-            Int32.TryParse(days, out numDays);
-            if (numDays < 7)
-            {
-                Console.WriteLine("Please try again. Your input is not a valid option. Minimum game length is 7 days.");
-                Console.ReadLine();
-                Console.Clear();
-                SelectNumberDays();
-            }
-            Console.Clear();
-            return numDays;
-        }
-
         public void NumberCustomersCurrentDay()
         {
             //Number of customers depends on weather condition for that day
@@ -62,5 +45,6 @@ namespace LemonadeStandProject
             Random random = new Random();
             temperature = random.Next(40, 115);
         }
+
     }
 }

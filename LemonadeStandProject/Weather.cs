@@ -31,7 +31,6 @@ namespace LemonadeStandProject
             Random random = new Random();
             condition = weatherConditions[random.Next(weatherConditions.Count)];
         }
-
     }
 }
 
