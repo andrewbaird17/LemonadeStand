@@ -11,6 +11,11 @@ namespace LemonadeStandProject
         //Member Variables (HAS A)
 
         //Constructor
+        public Lemon()
+        {
+            name = "lemon";
+            purchasePrice = 0.25;
+        }
 
         //Member Methods (CAN DO)
 

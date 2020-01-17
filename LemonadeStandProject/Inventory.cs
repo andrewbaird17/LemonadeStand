@@ -14,6 +14,10 @@ namespace LemonadeStandProject
         public List<Cup> cups;
         public List<SugarCube> sugarCubes;
         Recipe recipe;
+        public Lemon lemon;
+        public SugarCube sugarcube;
+        public IceCube icecube;
+        public Cup cup;
         //Constructor
 
         //Member Methods (CAN DO)
