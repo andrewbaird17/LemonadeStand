@@ -21,7 +21,7 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public void Run()
         {
-            CreateLengthOfGame();    
+            CreateLengthOfGame();
         }
         public void CreateLengthOfGame()
         {
@@ -33,12 +33,12 @@ namespace LemonadeStandProject
                 days[i].weather.ChooseCondition();
                 days[i].weather.ChooseTemp();
                 Console.WriteLine("Day " + (i + 1) + " is: " + (days[i].weather.condition) + " and has a high of " + (days[i].weather.temperature));
-            }
-            
+            }            
         }
         public void CheckDay()
         {
         
         }
+        
     }
 }
