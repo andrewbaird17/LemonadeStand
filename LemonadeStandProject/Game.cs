@@ -11,7 +11,6 @@ namespace LemonadeStandProject
         //Member Variables (HAS A)
         Player player;
         List<Day> days;
-        int currentDay;
         Store store;
         //Constructor
         public Game()
@@ -23,24 +22,71 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public void Run()
         {
-            CreateLengthOfGame();
+            UserInterface.StartScreen();
+            MainMenu();
+        }
+        public void MainMenu()
+
+        {
+            Console.Clear();
+            Console.WriteLine("Please select from the following  options:\n1:Start Game\n2:Instructionsn");
+            switch (Console.ReadLine())
+            {
+                case "1":
+                case "start":
+                case "start game":
+                case "game":
+                    CreateLengthOfGame();
+                    break;
+                case "2":
+                case "instructions":
+                case "instruct":
+                    UserInterface.Instructions();
+                    MainMenu();
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("That is not a valid choice.\n\n");
+                    MainMenu();
+                    break;
+            }
         }
         public void CreateLengthOfGame()
         {
-            Day initday = new Day();
-            int numDays = initday.SelectNumberDays();
-            for (int i = 0; i < numDays; i++)
+            int numberOfDays = SelectNumberDays();
+            for (int i = 0; i < numberOfDays; i++)
             {
                 days.Add(new Day());
                 days[i].weather.ChooseCondition();
                 days[i].weather.ChooseTemp();
+                Console.Clear();
                 Console.WriteLine("Day " + (i + 1) + " is: " + (days[i].weather.condition) + " and has a high of " + (days[i].weather.temperature));
-            }            
+            }
         }
+        public int SelectNumberDays()
+        {
+            
+            Console.WriteLine("How many days would you like to run your Lemonade Stand for?");
+            Int32.TryParse(Console.ReadLine(), out int numberOfDays);
+            if (numberOfDays < 7)
+            {
+                Console.Clear();
+                Console.WriteLine("Please try again. Your input is not a valid option. Minimum game length is 7 days.\n\n");
+                SelectNumberDays();
+            }
+                Console.Clear();
+                return numberOfDays;
+        }
+        public void GoToTheStore()
+        {
+
+        }
+
         public void StorePurchase()
         {
-            player.wallet.Money -= store.SellLemons(); 
+            player.wallet.Money -= store.SellLemons();
         }
-        
+
     }
 }
+
