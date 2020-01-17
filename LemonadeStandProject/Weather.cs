@@ -12,13 +12,13 @@ namespace LemonadeStandProject
 
         public string condition;
         public int temperature;
-        private List<string> weatherConditions;
+        private List<WeatherCondition> weatherConditions;
         public string predictedForecast;
 
         //Constructor
         public Weather()
         {
-            weatherConditions = new List<string>() { "Sunny", "Cloudy", "Rainy", "Overcast", "Windy", "Scattered Showers", "Hazy", "Foggy"};
+            weatherConditions = new List<WeatherCondition>() { } ;
         }
         //Member Methods (CAN DO)
         public void RunWeatherSelection()
