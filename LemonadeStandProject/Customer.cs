@@ -22,7 +22,7 @@ namespace LemonadeStandProject
         {
             // temperature determines the likelihood of those customers buying
             random = new Random();
-            chanceToBuy = random.Next(40, 80);
+            chanceToBuy = random.Next(40, 60);
         }
 
     }

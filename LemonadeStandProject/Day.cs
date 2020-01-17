@@ -49,7 +49,7 @@ namespace LemonadeStandProject
                 customers[i].LikelihoodToBuy();
             }
         }
-        public void CustomerChanceBuy()
+        public void CustomerChanceBuyTemp()
         {
             for (int i = 0; i < customers.Count; i++)
             {
@@ -62,6 +62,24 @@ namespace LemonadeStandProject
                     customers[i].chanceToBuy += 10;
                 }
                 else if (temperature > 80)
+                {
+                    customers[i].chanceToBuy += 20;
+                }
+            }
+        }
+        public void CustomerChanceBuyPrice()
+        {
+            for (int i = 0; i < customers.Count; i++)
+            {
+                if (pricePerCup > 0.50 && pricePerCup <= 0.75)
+                {
+                    customers[i].chanceToBuy -= 20;
+                }
+                else if (pricePerCup > 0.20 && pricePerCup <= 0.50)
+                {
+                    customers[i].chanceToBuy += 10;
+                }
+                else if (pricePerCup > 0 && pricePerCup <= 0.20)
                 {
                     customers[i].chanceToBuy += 20;
                 }
