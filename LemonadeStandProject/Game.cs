@@ -40,7 +40,7 @@ namespace LemonadeStandProject
         }
         public void StorePurchase()
         {
-            player.wallet.Money -= store.SellLemons(); 
+            player.wallet.Money -= store.SellLemons();
         }
     }
 }
