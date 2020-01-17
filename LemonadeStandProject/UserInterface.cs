@@ -35,6 +35,10 @@ namespace LemonadeStandProject
                 "Press enter to go back to main menu.");
             Console.ReadLine();
         }
+        public static void UserDisplay(string name,)
+        {
+            Console.WriteLine("Welcome" + string name)
+        }
 
     }
 }

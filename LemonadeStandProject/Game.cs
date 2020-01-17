@@ -36,6 +36,7 @@ namespace LemonadeStandProject
                 case "start":
                 case "start game":
                 case "game":
+                    player.CheckInventory();
                     CreateLengthOfGame();
                     break;
                 case "2":
@@ -81,7 +82,6 @@ namespace LemonadeStandProject
         {
 
         }
-
         public void StorePurchase()
         {
             player.wallet.Money -= store.SellLemons();
