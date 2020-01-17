@@ -25,24 +25,17 @@ namespace LemonadeStandProject
             UserInterface.StartScreen();
             MainMenu();
         }
-        public void RunGame()
-        {
-            CreateLengthOfGame();
-            //show user display
-            GoToTheStore(true);
-        }
         public void MainMenu()
 
         {
             Console.Clear();
-            Console.WriteLine("Please select from the following  options:\n1:Start Game\n2:Instructionsn");
+            Console.WriteLine("Please select from the following options:\n1:Start Game\n2:Instructions");
             switch (Console.ReadLine())
             {
                 case "1":
                 case "start":
                 case "start game":
-                case "game":
-                    player.CheckInventory();
+                case "game":  
                     RunGame();
                     break;
                 case "2":
@@ -57,6 +50,19 @@ namespace LemonadeStandProject
                     MainMenu();
                     break;
             }
+        }
+        public void RunGame()
+        {
+            player.ChooseYourUserName();           
+            CreateLengthOfGame();
+            do
+            {
+
+            
+            //Show Daily User display
+            player.CheckInventory();            
+            GoToTheStore(true);
+            } while (true);
         }
         public void CreateLengthOfGame()
         {
