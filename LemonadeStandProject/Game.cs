@@ -102,7 +102,12 @@ namespace LemonadeStandProject
         public double Shopping()
         {
             double saleCost;
-            Console.WriteLine("What would you like to buy:\n1. Lemons\n2. Sugar\n3. Cups \n4. Ice \n5. Exit back to ");
+            Console.WriteLine("What would you like to buy:\n" +
+                "1. Lemons - Cost 0.25 per lemon\n" +
+                "2. Sugar Cube - Cost 0.10 per Sugar Cube\n" +
+                "3. Cups - Cost 0.05 per Cup \n" +
+                "4. Ice Cube - Cost 0.01 per Ice Cube \n" +
+                "5. Exit back to ");
             switch (Console.ReadLine().ToLower())
             {
                 case "1":
