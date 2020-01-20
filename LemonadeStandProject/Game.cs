@@ -9,6 +9,7 @@ namespace LemonadeStandProject
     public class Game
     {
         //Member Variables (HAS A)
+        Random random;
         Player player;
         List<Day> days;
         Store store;
@@ -19,6 +20,7 @@ namespace LemonadeStandProject
             days = new List<Day>();
             player = new Player();
             store = new Store();
+            random = new Random();
         }
         //Member Methods (CAN DO)
         public void StartUp()
@@ -69,7 +71,7 @@ namespace LemonadeStandProject
             numberOfDays = SelectNumberDays();
             for (int i = 0; i < numberOfDays; i++)
             {
-                days.Add(new Day());
+                days.Add(new Day(random));
                 days[i].ChooseCondition();
                 days[i].ChooseTemp();
                 days[i].ChooseNumberOfCustomers(days[i].weather);
@@ -194,6 +196,9 @@ namespace LemonadeStandProject
                     break;
                 case "2":
                 case "forecast":
+                    WeatherForecast();
+                    Console.Clear();
+                    UserChoices();
                     break;
                 case "3":
                 case "open":
@@ -201,6 +206,14 @@ namespace LemonadeStandProject
                 default:
                     break;
             }
+        }
+        public void WeatherForecast()
+        {
+            for (int i = 0; i < numberOfDays; i++)
+            {
+                Console.WriteLine("Day "+(i+1)+ ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n");
+            }
+            Console.ReadLine();    
         }
     }
 }

@@ -16,27 +16,26 @@ namespace LemonadeStandProject
         public List<Customer> customers;
         List<Weather> listOfWeather;
         //Constructor
-        public Day()
+        public Day(Random random)
         {
-
+            this.random = random;
             listOfWeather = new List<Weather> { new Foggy(), new Cloudy(), new Hazy(), new Overcast(), new Rainy(), new Sunny(), new Windy()}; 
         }
         //Member Methods (CAN DO)
         public void ChooseNumberOfCustomers(Weather weather)
         {
-            Random random = new Random();
-            ChooseCondition();
+            
             randomNumberOfCustomers = random.Next(weather.lowestNumCustomers, weather.highestNumCustomers);
         }
         public Weather ChooseCondition()
         {
-            Random random = new Random();
+            
             weather = listOfWeather[random.Next(listOfWeather.Count)];
             return weather;
         }  
         public void ChooseTemp()
         {
-            Random random = new Random();
+            
             temperature = random.Next(40, 115);
         }
         public void CreateCustomers()
