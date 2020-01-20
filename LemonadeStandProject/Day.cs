@@ -18,6 +18,7 @@ namespace LemonadeStandProject
         //Constructor
         public Day()
         {
+
             listOfWeather = new List<Weather> { new Foggy(), new Cloudy(), new Hazy(), new Overcast(), new Rainy(), new Sunny(), new Windy()}; 
         }
         //Member Methods (CAN DO)
@@ -66,11 +67,13 @@ namespace LemonadeStandProject
                 }
             }
         }
+
+        // USE GET/SET?? to access pricePerCup as readonly 
         //public void CustomerChanceBuyPrice()
         //{
         //    for (int i = 0; i < customers.Count; i++)
         //    {
-        //        if (pricePerCup > 0.50 && pricePerCup <= 0.75)
+        //        if (player.recipe.pricePerCup > 0.50 && pricePerCup <= 0.75)
         //        {
         //            customers[i].chanceToBuy -= 20;
         //        }
