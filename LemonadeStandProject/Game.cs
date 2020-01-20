@@ -73,6 +73,7 @@ namespace LemonadeStandProject
                 Console.ReadLine();
                 UserChoices();
                 StartDay();
+                days[i].CreateCustomers(player);
                 RunDaySimulation(i);
                 UserInterface.EndOfDayDisplay(player, days[i], servedCustomers);
                 i++;
@@ -154,9 +155,7 @@ namespace LemonadeStandProject
                     return saleCost;
                 case "5":
                 case "exit":
-                    UserChoices();
                     saleCost = 0;
-
                     return saleCost;
                 default:
                     Console.Clear();
@@ -270,7 +269,7 @@ namespace LemonadeStandProject
         }
         public void RunDaySimulation(int i)
         {   
-            for (int j = 0; j < days[i].customers.Count; j++)
+            for (int j = 0; j < days[i].randomNumberOfCustomers; j++)
             {
                 if (days[i].customers[j].chanceToBuy > 70)
                 {
