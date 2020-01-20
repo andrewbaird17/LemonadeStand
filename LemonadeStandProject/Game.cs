@@ -14,7 +14,6 @@ namespace LemonadeStandProject
         List<Day> days;
         Store store;
         int numberOfDays;
-        bool playerWantsToShop;
 
         //Constructor
         public Game()
@@ -102,17 +101,14 @@ namespace LemonadeStandProject
             Console.Clear();
             return numberOfDays;
         }
-        public void GoToTheStore(bool playerWantsToShop)
+        public void GoToTheStore()
         {
             Console.Clear();
             double saleCost;
             UserInterface.InventoryDisplay(player);
-            do
-            {
-                saleCost = Shopping();
-                CreditCheck(saleCost);
-                StorePurchase(saleCost);
-            } while (playerWantsToShop == false);
+            saleCost = Shopping();
+            CreditCheck(saleCost);
+            StorePurchase(saleCost);
         }
         public double Shopping()
         {
@@ -158,12 +154,12 @@ namespace LemonadeStandProject
                 case "exit":
                     UserChoices();
                     saleCost = 0;
-                    
+
                     return saleCost;
                 default:
                     Console.Clear();
                     Console.WriteLine("Try using just the number associated with the choice!");
-                    GoToTheStore(true);
+                    GoToTheStore();
                     saleCost = 0;
                     return saleCost;
             }
@@ -194,15 +190,13 @@ namespace LemonadeStandProject
             {
                 case "1":
                 case "yes":
-                    playerWantsToShop = true;
                     Console.Clear();
-                    GoToTheStore(playerWantsToShop);
+                    GoToTheStore();
                     break;
                 case "2":
                 case "no":
-                    playerWantsToShop = false;
                     Console.Clear();
-                    GoToTheStore(playerWantsToShop);
+                    UserChoices();
                     break;
                 default:
                     Console.Clear();
@@ -218,7 +212,7 @@ namespace LemonadeStandProject
             {
                 case "1":
                 case "go to store":
-                    GoToTheStore(playerWantsToShop = true);
+                    GoToTheStore();
                     break;
                 case "2":
                 case "forecast":
@@ -247,10 +241,13 @@ namespace LemonadeStandProject
         }
         public void WeatherForecast()
         {
+            Console.Clear();
             for (int i = 0; i < numberOfDays; i++)
             {
-                Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n");
-            }
+                Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n\nPress enter to go back to the main screen." +
+                    "" +
+                    "");
+            }        
             Console.ReadLine();
         }
         public void RunDaySimulation(int i)
