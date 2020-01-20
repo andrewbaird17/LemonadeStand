@@ -10,7 +10,7 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)       
         Inventory storeInventory;
-        Player player;
+        public Player player;
         public int numberOfItems;
         public double saleCost;
         //Constructor
@@ -20,7 +20,7 @@ namespace LemonadeStandProject
         }
         //Member Methods (CAN DO)
 
-        public double SellLemons()
+        public double SellLemons(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.lemon.purchasePrice * numberOfItems;
