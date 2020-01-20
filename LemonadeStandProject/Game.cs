@@ -123,23 +123,29 @@ namespace LemonadeStandProject
                 case "lemon":
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
-                    saleCost = store.SellLemons();
+                    saleCost = store.SellLemons(player);
                     return saleCost;
                 case "2":
                 case "sugar":
                 case "sugar cubes":
-                    saleCost = store.SellSugar();
+                    Console.Clear();
+                    UserInterface.InventoryDisplay(player);
+                    saleCost = store.SellSugar(player);
                     return saleCost;
 
                 case "3":
                 case "cups":
                 case "cup":
-                    saleCost = store.SellCups();
+                    Console.Clear();
+                    UserInterface.InventoryDisplay(player);
+                    saleCost = store.SellCups(player);
                     return saleCost;
 
                 case "4":
                 case "ice":
-                    saleCost = store.SellIce();
+                    Console.Clear();
+                    UserInterface.InventoryDisplay(player);
+                    saleCost = store.SellIce(player);
                     return saleCost;
                 //case "5":
                 //case "exit":
