@@ -68,7 +68,7 @@ namespace LemonadeStandProject
                 UserInterface.InventoryDisplay(player);
                 UserInterface.RecipeDisplay(player);
                 Console.ReadLine();
-
+                Console.Clear();
                 UserChoices();
                 i++;
             } while (i < numberOfDays);
@@ -224,6 +224,11 @@ namespace LemonadeStandProject
                     break;
                 case "3":
                 case "change recipe":
+                    Console.Clear();
+                    UserInterface.RecipeDisplay(player);
+                    player.recipe.ChangeAmountOfIceCubes();
+                    player.recipe.ChangeAmountOfLemonsInRecipe();
+                    player.recipe.ChangeAmountOfSugarCubes();
                     break;
                 case "4":
                 case "open":
