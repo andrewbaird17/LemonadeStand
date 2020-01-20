@@ -14,6 +14,7 @@ namespace LemonadeStandProject
         List<Day> days;
         Store store;
         int numberOfDays;
+        
         //Constructor
         public Game()
         {
@@ -21,6 +22,7 @@ namespace LemonadeStandProject
             player = new Player();
             store = new Store();
             random = new Random();
+            
         }
         //Member Methods (CAN DO)
         public void StartUp()
@@ -247,6 +249,16 @@ namespace LemonadeStandProject
                 Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n");
             }
             Console.ReadLine();
+        }
+        public void RunDaySimulation(int i)
+        {
+            for (int j = 0; j < days[i].randomNumberOfCustomers; j++)
+            {
+                if (days[i].customers[j].chanceToBuy > 70)
+                {
+                    player.SellGlassOfLemonaid();
+                }
+            }
         }
     }
 }
