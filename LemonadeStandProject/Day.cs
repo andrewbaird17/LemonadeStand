@@ -63,25 +63,23 @@ namespace LemonadeStandProject
                 }
             }
         }
-
-        // USE GET/SET?? to access pricePerCup as readonly 
-        //public void CustomerChanceBuyPrice()
-        //{
-        //    for (int i = 0; i < customers.Count; i++)
-        //    {
-        //        if (player.recipe.pricePerCup > 0.50 && pricePerCup <= 0.75)
-        //        {
-        //            customers[i].chanceToBuy -= 20;
-        //        }
-        //        else if (pricePerCup > 0.20 && pricePerCup <= 0.50)
-        //        {
-        //            customers[i].chanceToBuy += 10;
-        //        }
-        //        else if (pricePerCup > 0 && pricePerCup <= 0.20)
-        //        {
-        //            customers[i].chanceToBuy += 20;
-        //        }
-        //    }
-        //}
+        public void CustomerChanceBuyPrice(Player player)
+        {
+            for (int i = 0; i < customers.Count; i++)
+            {
+                if (player.recipe.pricePerCup > 0.50 && player.recipe.pricePerCup <= 0.75)
+                {
+                    customers[i].chanceToBuy -= 20;
+                }
+                else if (player.recipe.pricePerCup > 0.20 && player.recipe.pricePerCup <= 0.50)
+                {
+                    customers[i].chanceToBuy += 10;
+                }
+                else if (player.recipe.pricePerCup > 0 && player.recipe.pricePerCup <= 0.20)
+                {
+                    customers[i].chanceToBuy += 20;
+                }
+            }
+        }
     }
 }
