@@ -32,6 +32,7 @@ namespace LemonadeStandProject
         {
             Console.WriteLine("Enter your Name.");
             userName = Console.ReadLine();
+            Console.Clear();
         }
         public void CreateNewPitcher()
         {

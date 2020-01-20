@@ -56,12 +56,16 @@ namespace LemonadeStandProject
         }
         public void RunGame()
         {
+            Console.Clear();
             int i = 0;
             player.ChooseYourUserName();
             CreateLengthOfGame();
             do
             {
                 UserInterface.UserDisplay(player, days[i]);
+                Console.ReadLine();
+                UserInterface.InventoryDisplay(player);
+                Console.ReadLine();
                 UserChoices();
                 i++;
             } while (i < numberOfDays);
@@ -93,7 +97,9 @@ namespace LemonadeStandProject
         }
         public void GoToTheStore(bool playerWantsToShop)
         {
+            Console.Clear();
             double saleCost;
+            UserInterface.InventoryDisplay(player);
             do
             {
                 saleCost = Shopping();
@@ -145,21 +151,24 @@ namespace LemonadeStandProject
                     saleCost = 0;
                     return saleCost;
             }
-
         }
         public void CreditCheck(double saleCost)
         {
             if (saleCost > player.wallet.Money)
             {
                 Console.Clear();
-                Console.WriteLine("CARD DECLINED!\n\n");
+                Console.WriteLine("CARD DECLINED!\n" +
+                    "This costs $" + saleCost + ", you only have $" + player.wallet.Money + "remaining.\n\n");
                 ContinueShopping();
             }
 
         }
         public void StorePurchase(double saleCost)
         {
+            Console.WriteLine("Your total comes to $" + saleCost + "!\n" +
+               "$" + player.wallet.Money + " - $" + saleCost);
             player.wallet.Money -= saleCost;
+            Console.WriteLine("You have $" + player.wallet.Money + " remaining.");
             ContinueShopping();
         }
         public void ContinueShopping()
@@ -171,11 +180,13 @@ namespace LemonadeStandProject
                 case "1":
                 case "yes":
                     playerWantsToShop = true;
+                    Console.Clear();
                     GoToTheStore(playerWantsToShop);
                     break;
                 case "2":
                 case "no":
                     playerWantsToShop = false;
+                    Console.Clear();
                     GoToTheStore(playerWantsToShop);
                     break;
                 default:

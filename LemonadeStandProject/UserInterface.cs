@@ -16,7 +16,7 @@ namespace LemonadeStandProject
         public static void StartScreen()
         {
             Console.WriteLine("Welcome your Lemonaid Stand!\n\nPlease press enter to continue to the main menu!");
-            Console.ReadLine();   
+            Console.ReadLine();
         }
         public static void Instructions()
         {
@@ -38,21 +38,22 @@ namespace LemonadeStandProject
         public static void UserDisplay(Player player, Day days)
         {
             Console.WriteLine(player.userName + "'s Lemonaid Stand\n" +
-                "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition+"\n" +
-                "You currently have: $"+ player.wallet.Money+"\n\n" +
-                "Your Inventory is currently: \n" +
-                "Cups: "+ player.inventory.cups.Count()+"\n" +
-                "Lemons: " + player.inventory.lemons.Count() + "\n" +
-                "Sugar Cubes: " + player.inventory.sugarCubes.Count() + "\n" +
-                "Ice Cubes: " + player.inventory.icecubes.Count() + "\n");
-        
-            Console.ReadLine();
+                "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition + "\n");
         }
-        
+        public static void InventoryDisplay(Player player)
+        {
+            Console.WriteLine(
+            "You currently have: $" + player.wallet.Money + "\n\n" +
+            "Your Inventory is currently: \n" +
+            "Cups: " + player.inventory.cups.Count() + "\n" +
+            "Lemons: " + player.inventory.lemons.Count() + "\n" +
+            "Sugar Cubes: " + player.inventory.sugarCubes.Count() + "\n" +
+            "Ice Cubes: " + player.inventory.icecubes.Count() + "\n");
+        }
 
     }
 }
 
 
-    
+
 
