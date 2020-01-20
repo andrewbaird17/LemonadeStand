@@ -14,7 +14,6 @@ namespace LemonadeStandProject
         List<Day> days;
         Store store;
         int numberOfDays;
-        bool playerWantsToShop;
 
         //Constructor
         public Game()
@@ -71,9 +70,7 @@ namespace LemonadeStandProject
                 UserInterface.InventoryDisplay(player);
                 UserInterface.RecipeDisplay(player);
                 Console.ReadLine();
-                Console.Clear();
-                UserChoices();
-                RunDaySimulation(i);
+                UserChoices(i);
                 i++;
             } while (i < numberOfDays);
         }
@@ -102,17 +99,14 @@ namespace LemonadeStandProject
             Console.Clear();
             return numberOfDays;
         }
-        public void GoToTheStore(bool playerWantsToShop)
+        public void GoToTheStore()
         {
             Console.Clear();
             double saleCost;
             UserInterface.InventoryDisplay(player);
-            do
-            {
-                saleCost = Shopping();
-                CreditCheck(saleCost);
-                StorePurchase(saleCost);
-            } while (playerWantsToShop == false);
+            saleCost = Shopping();
+            CreditCheck(saleCost);
+            StorePurchase(saleCost);
         }
         public double Shopping()
         {
@@ -158,12 +152,12 @@ namespace LemonadeStandProject
                 case "exit":
                     UserChoices();
                     saleCost = 0;
-                    
+
                     return saleCost;
                 default:
                     Console.Clear();
                     Console.WriteLine("Try using just the number associated with the choice!");
-                    GoToTheStore(true);
+                    GoToTheStore();
                     saleCost = 0;
                     return saleCost;
             }
@@ -194,15 +188,13 @@ namespace LemonadeStandProject
             {
                 case "1":
                 case "yes":
-                    playerWantsToShop = true;
                     Console.Clear();
-                    GoToTheStore(playerWantsToShop);
+                    GoToTheStore();
                     break;
                 case "2":
                 case "no":
-                    playerWantsToShop = false;
                     Console.Clear();
-                    GoToTheStore(playerWantsToShop);
+                    UserChoices();
                     break;
                 default:
                     Console.Clear();
@@ -211,20 +203,20 @@ namespace LemonadeStandProject
                     break;
             }
         }
-        public void UserChoices()
+        public void UserChoices(int i)
         {
             Console.WriteLine("What would you like to do?\n1: Go to Store\n2: See Week's Forecast\n3: Change Recipe\n4: Open Lemonade Stand");
             switch (Console.ReadLine().ToLower())
             {
                 case "1":
                 case "go to store":
-                    GoToTheStore(playerWantsToShop = true);
+                    GoToTheStore();
                     break;
                 case "2":
                 case "forecast":
                     WeatherForecast();
                     Console.Clear();
-                    UserChoices();
+                    UserChoices(i);
                     break;
                 case "3":
                 case "change recipe":
@@ -237,11 +229,12 @@ namespace LemonadeStandProject
                     break;
                 case "4":
                 case "open":
+                    RunDaySimulation(i);
                     break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Please Try Entering the number associated with the option you would like to do.");
-                    UserChoices();
+                    UserChoices(i);
                     break;
             }
         }
