@@ -24,52 +24,52 @@ namespace LemonadeStandProject
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.lemon.purchasePrice * numberOfItems;
-            AddLemonsToInventory(numberOfItems);
+            AddLemonsToInventory(numberOfItems, player);
             return saleCost;
         }
-        public void AddLemonsToInventory(int numberOfItems)
+        public void AddLemonsToInventory(int numberOfItems, Player player)
         {
             for (int i = 0; i < numberOfItems; i++)
             {
                 player.inventory.lemons.Add(new Lemon());
             }
         }
-        public double SellSugar()
+        public double SellSugar(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.sugarcube.purchasePrice * numberOfItems;
             AddSugarToInventory(numberOfItems);
             return saleCost;
         }
-        public void AddSugarToInventory(int numberOfItems)
+        public void AddSugarToInventory(int numberOfItems, Player player)
         {
             for (int i = 0; i < numberOfItems; i++)
             {
                 player.inventory.sugarCubes.Add(new SugarCube());
             }
         }
-        public double SellIce()
+        public double SellIce(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.icecube.purchasePrice * numberOfItems;
             AddIceToInventory(numberOfItems);
             return saleCost;
         }
-        public void AddIceToInventory(int numberOfItems)
+        public void AddIceToInventory(int numberOfItems, Player player)
         {
             for (int i = 0; i < numberOfItems; i++)
             {
                 player.inventory.icecubes.Add(new IceCube());
             }
         }
-        public double SellCups()
+        public double SellCups(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.cup.purchasePrice * numberOfItems;
             AddCupToInventory(numberOfItems);
             return saleCost;
         }
-        public void AddCupToInventory(int numberOfItems)
+        public void AddCupToInventory(int numberOfItems, Player player)
         {
             for (int i = 0; i < numberOfItems; i++)
             {
