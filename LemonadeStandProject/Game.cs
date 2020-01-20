@@ -240,10 +240,13 @@ namespace LemonadeStandProject
         }
         public void WeatherForecast()
         {
+            Console.Clear();
             for (int i = 0; i < numberOfDays; i++)
             {
-                Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n");
-            }
+                Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n\nPress enter to go back to the main screen." +
+                    "" +
+                    "");
+            }        
             Console.ReadLine();
         }
         public void RunDaySimulation(int i)
