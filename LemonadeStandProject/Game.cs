@@ -83,14 +83,14 @@ namespace LemonadeStandProject
         }
         public int SelectNumberDays()
         {
-
             Console.WriteLine("How many days would you like to run your Lemonade Stand for?");
             Int32.TryParse(Console.ReadLine(), out int numberOfDays);
             if (numberOfDays < 7)
             {
                 Console.Clear();
                 Console.WriteLine("Please try again. Your input is not a valid option. Minimum game length is 7 days.\n\n");
-                SelectNumberDays();
+
+                return SelectNumberDays();
             }
             Console.Clear();
             return numberOfDays;
