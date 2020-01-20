@@ -121,6 +121,8 @@ namespace LemonadeStandProject
                 case "1":
                 case "lemons":
                 case "lemon":
+                    Console.Clear();
+                    UserInterface.InventoryDisplay(player);
                     saleCost = store.SellLemons();
                     return saleCost;
                 case "2":
@@ -165,8 +167,8 @@ namespace LemonadeStandProject
         }
         public void StorePurchase(double saleCost)
         {
-            Console.WriteLine("Your total comes to $" + saleCost + "!\n" +
-               "$" + player.wallet.Money + " - $" + saleCost);
+            Console.Clear();
+            Console.WriteLine("Your total comes to $" + saleCost + "!\n");
             player.wallet.Money -= saleCost;
             Console.WriteLine("You have $" + player.wallet.Money + " remaining.");
             ContinueShopping();
