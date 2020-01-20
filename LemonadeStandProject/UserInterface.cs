@@ -51,6 +51,17 @@ namespace LemonadeStandProject
             "Ice Cubes: " + player.inventory.icecubes.Count() + "\n");
         }
 
+        public static void RecipeDisplay(Player player)
+        {
+            Console.WriteLine("Current Recipe:\n" +
+            "Lemons: " + player.recipe.amountOfLemons + "\n" +
+            "Sugar Cubes: " + player.recipe.amountOfSugarCubes + "\n" +
+            "Ice Cubes: " + player.recipe.amountOfIceCubes + "\n");
+        }
+        public static void CostDisplay(Player player)
+        {
+            Console.WriteLine("Current Cost per Cup: $" + player.recipe.pricePerCup);
+        }
     }
 }
 

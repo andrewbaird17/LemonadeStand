@@ -63,9 +63,12 @@ namespace LemonadeStandProject
             do
             {
                 UserInterface.UserDisplay(player, days[i]);
+                UserInterface.CostDisplay(player);
                 Console.ReadLine();
                 UserInterface.InventoryDisplay(player);
+                UserInterface.RecipeDisplay(player);
                 Console.ReadLine();
+
                 UserChoices();
                 i++;
             } while (i < numberOfDays);
@@ -206,7 +209,7 @@ namespace LemonadeStandProject
         }
         public void UserChoices()
         {
-            Console.WriteLine("What would you like to do?\n1: Go to Store\n2: See Week's Forecast\n3: Open Lemonade Stand");
+            Console.WriteLine("What would you like to do?\n1: Go to Store\n2: See Week's Forecast\n3: Change Recipe\n4: Open Lemonade Stand");
             switch (Console.ReadLine().ToLower())
             {
                 case "1":
@@ -220,9 +223,15 @@ namespace LemonadeStandProject
                     UserChoices();
                     break;
                 case "3":
+                case "change recipe":
+                    break;
+                case "4":
                 case "open":
                     break;
                 default:
+                    Console.Clear();
+                    Console.WriteLine("Please Try Entering the number associated with the option you would like to do.");
+                    UserChoices();
                     break;
             }
         }
@@ -230,9 +239,9 @@ namespace LemonadeStandProject
         {
             for (int i = 0; i < numberOfDays; i++)
             {
-                Console.WriteLine("Day "+(i+1)+ ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n");
+                Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n");
             }
-            Console.ReadLine();    
+            Console.ReadLine();
         }
     }
 }
