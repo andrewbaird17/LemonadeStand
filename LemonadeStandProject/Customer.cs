@@ -15,12 +15,11 @@ namespace LemonadeStandProject
         //Constructor
         public Customer()
         {
-           
+            
         }
         //Member Methods (CAN DO)
         public void LikelihoodToBuy()
         {
-            // temperature determines the likelihood of those customers buying
             random = new Random();
             chanceToBuy = random.Next(40, 60);
         }

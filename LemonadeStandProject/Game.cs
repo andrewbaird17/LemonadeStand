@@ -14,7 +14,8 @@ namespace LemonadeStandProject
         List<Day> days;
         Store store;
         int numberOfDays;
-        
+        bool playerWantsToShop;
+
         //Constructor
         public Game()
         {
@@ -22,7 +23,7 @@ namespace LemonadeStandProject
             player = new Player();
             store = new Store();
             random = new Random();
-            
+
         }
         //Member Methods (CAN DO)
         public void StartUp()
@@ -72,6 +73,7 @@ namespace LemonadeStandProject
                 Console.ReadLine();
                 Console.Clear();
                 UserChoices();
+                RunDaySimulation(i);
                 i++;
             } while (i < numberOfDays);
         }
@@ -110,7 +112,7 @@ namespace LemonadeStandProject
                 saleCost = Shopping();
                 CreditCheck(saleCost);
                 StorePurchase(saleCost);
-            } while (playerWantsToShop == true);
+            } while (playerWantsToShop == false);
         }
         public double Shopping()
         {
@@ -152,11 +154,12 @@ namespace LemonadeStandProject
                     UserInterface.InventoryDisplay(player);
                     saleCost = store.SellIce(player);
                     return saleCost;
-                //case "5":
-                //case "exit":
-                //    UserChoices();
-                //    return saleCost;
-                //    break;
+                case "5":
+                case "exit":
+                    UserChoices();
+                    saleCost = 0;
+                    
+                    return saleCost;
                 default:
                     Console.Clear();
                     Console.WriteLine("Try using just the number associated with the choice!");
@@ -186,7 +189,6 @@ namespace LemonadeStandProject
         }
         public void ContinueShopping()
         {
-            bool playerWantsToShop;
             Console.WriteLine("Would you like to continue Shopping?\n1. Yes\n2. No");
             switch (Console.ReadLine().ToLower())
             {
@@ -204,7 +206,7 @@ namespace LemonadeStandProject
                     break;
                 default:
                     Console.Clear();
-                    Console.WriteLine("Please try enetering only the number associated with your choice.");
+                    Console.WriteLine("Please try entering only the number associated with your choice.");
                     ContinueShopping();
                     break;
             }
@@ -216,7 +218,7 @@ namespace LemonadeStandProject
             {
                 case "1":
                 case "go to store":
-                    GoToTheStore(true);
+                    GoToTheStore(playerWantsToShop = true);
                     break;
                 case "2":
                 case "forecast":
@@ -228,6 +230,7 @@ namespace LemonadeStandProject
                 case "change recipe":
                     Console.Clear();
                     UserInterface.RecipeDisplay(player);
+                    Console.WriteLine("To keep recipe the same, please enter the same values when prompted.");
                     player.recipe.ChangeAmountOfIceCubes();
                     player.recipe.ChangeAmountOfLemonsInRecipe();
                     player.recipe.ChangeAmountOfSugarCubes();
@@ -257,6 +260,7 @@ namespace LemonadeStandProject
                 if (days[i].customers[j].chanceToBuy > 70)
                 {
                     player.SellGlassOfLemonaid();
+                    player.wallet.Money += player.recipe.pricePerCup;
                 }
             }
         }
