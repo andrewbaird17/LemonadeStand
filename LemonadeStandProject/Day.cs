@@ -23,19 +23,16 @@ namespace LemonadeStandProject
         }
         //Member Methods (CAN DO)
         public void ChooseNumberOfCustomers(Weather weather)
-        {
-            
+        {           
             randomNumberOfCustomers = random.Next(weather.lowestNumCustomers, weather.highestNumCustomers);
         }
         public Weather ChooseCondition()
-        {
-            
+        {           
             weather = listOfWeather[random.Next(listOfWeather.Count)];
             return weather;
         }  
         public void ChooseTemp()
-        {
-            
+        {           
             temperature = random.Next(40, 115);
         }
         public void CreateCustomers()

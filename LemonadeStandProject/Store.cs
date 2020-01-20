@@ -10,7 +10,7 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)       
         Inventory storeInventory;
-        Player player;
+        public Player player;
         public int numberOfItems;
         public double saleCost;
         //Constructor
