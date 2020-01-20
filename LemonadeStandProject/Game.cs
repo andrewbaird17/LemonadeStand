@@ -36,7 +36,7 @@ namespace LemonadeStandProject
                 case "1":
                 case "start":
                 case "start game":
-                case "game":  
+                case "game":
                     RunGame();
                     break;
                 case "2":
@@ -55,15 +55,12 @@ namespace LemonadeStandProject
         public void RunGame()
         {
             int i = 0;
-            player.ChooseYourUserName();           
+            player.ChooseYourUserName();
             CreateLengthOfGame();
             do
             {
-                UserInterface.UserDisplay(player.userName, days[i]);
-            
-            //Show Daily User display
-            player.CheckInventory();            
-            GoToTheStore(true);
+                UserInterface.UserDisplay(player, days[i]);
+                UserChoices();
                 i++;
             } while (i < numberOfDays);
         }
@@ -129,7 +126,11 @@ namespace LemonadeStandProject
                 case "ice":
                     saleCost = store.SellIce();
                     return saleCost;
-
+                //case "5":
+                //case "exit":
+                //    UserChoices();
+                //    return saleCost;
+                //    break;
                 default:
                     Console.Clear();
                     Console.WriteLine("Try using just the number associated with the choice!");
@@ -177,7 +178,25 @@ namespace LemonadeStandProject
                     break;
             }
         }
-
+        public void UserChoices()
+        {
+            Console.WriteLine("What would you like to do?\n1: Go to Store\n2: See Week's Forecast\n3: Open Lemonade Stand");
+            switch (Console.ReadLine().ToLower())
+            {
+                case "1":
+                case "go to store":
+                    GoToTheStore(true);
+                    break;
+                case "2":
+                case "forecast":
+                    break;
+                case "3":
+                case "open":
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }
 

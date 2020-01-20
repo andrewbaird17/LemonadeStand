@@ -35,10 +35,17 @@ namespace LemonadeStandProject
                 "Press enter to go back to main menu.");
             Console.ReadLine();
         }
-        public static void UserDisplay(string userName, Day days)
+        public static void UserDisplay(Player player, Day days)
         {
-            Console.WriteLine(userName + "'s Lemonaid Stand\n" +
-                "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition);
+            Console.WriteLine(player.userName + "'s Lemonaid Stand\n" +
+                "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition+"\n" +
+                "You currently have: $"+ player.wallet.Money+"\n\n" +
+                "Your Inventory is currently: \n" +
+                "Cups: "+ player.inventory.cups.Count()+"\n" +
+                "Lemons: " + player.inventory.lemons.Count() + "\n" +
+                "Sugar Cubes: " + player.inventory.sugarCubes.Count() + "\n" +
+                "Ice Cubes: " + player.inventory.icecubes.Count() + "\n");
+        
             Console.ReadLine();
         }
         

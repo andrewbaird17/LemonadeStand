@@ -19,7 +19,17 @@ namespace LemonadeStandProject
         public IceCube icecube;
         public Cup cup;
         //Constructor
-
+        public Inventory()
+        {
+            lemons = new List<Lemon>();
+            icecubes = new List<IceCube>();
+            cups = new List<Cup>();
+            sugarCubes = new List<SugarCube>();
+            lemon = new Lemon();
+            icecube = new IceCube();
+            cup = new Cup();
+            sugarcube = new SugarCube();
+        }
         //Member Methods (CAN DO)
         
         public void SubtractLemonsFromInventory()
