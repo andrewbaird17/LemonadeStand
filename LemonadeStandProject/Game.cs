@@ -12,6 +12,7 @@ namespace LemonadeStandProject
         Player player;
         List<Day> days;
         Store store;
+        int numberOfDays;
         //Constructor
         public Game()
         {
@@ -53,26 +54,28 @@ namespace LemonadeStandProject
         }
         public void RunGame()
         {
+            int i = 0;
             player.ChooseYourUserName();           
             CreateLengthOfGame();
             do
             {
-
+                UserInterface.UserDisplay(player.userName, days[i]);
             
             //Show Daily User display
             player.CheckInventory();            
             GoToTheStore(true);
-            } while (true);
+                i++;
+            } while (i < numberOfDays);
         }
         public void CreateLengthOfGame()
         {
-            int numberOfDays = SelectNumberDays();
+            numberOfDays = SelectNumberDays();
             for (int i = 0; i < numberOfDays; i++)
             {
                 days.Add(new Day());
                 days[i].ChooseCondition();
                 days[i].ChooseTemp();
-                days[i].ChooseNumCustomers();
+                days[i].ChooseNumberOfCustomers(days[i].weather);
             }
         }
         public int SelectNumberDays()

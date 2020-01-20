@@ -35,9 +35,11 @@ namespace LemonadeStandProject
                 "Press enter to go back to main menu.");
             Console.ReadLine();
         }
-        public static void UserDisplay()
+        public static void UserDisplay(string userName, Day days)
         {
-            
+            Console.WriteLine(userName + "'s Lemonaid Stand\n" +
+                "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition);
+            Console.ReadLine();
         }
         
 

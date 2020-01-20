@@ -9,33 +9,30 @@ namespace LemonadeStandProject
     public class Day
     {
         //Member Variables (HAS A)
+        Random random;
         public Weather weather;
         public int temperature;
+        public int randomNumberOfCustomers;
         public List<Customer> customers;
-        Random random;
-        List<Weather> possibleWeather;
-        public Weather currentWeather;
-        public int randcustomers;
-
-
+        List<Weather> listOfWeather;
         //Constructor
         public Day()
         {
-            possibleWeather = new List<Weather> { new Foggy(), new Cloudy(), new Hazy(), new Overcast(), new Rainy(), new Sunny(), new Windy()};
-            weather = new Weather();
+            listOfWeather = new List<Weather> { new Foggy(), new Cloudy(), new Hazy(), new Overcast(), new Rainy(), new Sunny(), new Windy()}; 
         }
         //Member Methods (CAN DO)
-        public void ChooseCondition()
-        {
-            Random random = new Random();
-            currentWeather = possibleWeather[random.Next(possibleWeather.Count)];
-        }
-        public void ChooseNumCustomers()
+        public void ChooseNumberOfCustomers(Weather weather)
         {
             Random random = new Random();
             ChooseCondition();
-            randcustomers = random.Next(currentWeather.lowestNumCustomers, currentWeather.highestNumCustomers);
+            randomNumberOfCustomers = random.Next(weather.lowestNumCustomers, weather.highestNumCustomers);
         }
+        public Weather ChooseCondition()
+        {
+            Random random = new Random();
+            weather = listOfWeather[random.Next(listOfWeather.Count)];
+            return weather;
+        }  
         public void ChooseTemp()
         {
             Random random = new Random();
@@ -43,7 +40,7 @@ namespace LemonadeStandProject
         }
         public void CreateCustomers()
         {
-            for (int i = 0; i < randcustomers; i++)
+            for (int i = 0; i < randomNumberOfCustomers; i++)
             {
                 customers = new List<Customer>();
                 customers.Add(new Customer());
