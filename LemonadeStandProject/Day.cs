@@ -48,6 +48,7 @@ namespace LemonadeStandProject
 
             CustomerChanceBuyTemp();
             CustomerChanceBuyPrice(player);
+            CustomerChanceBuyRecipe(player);
         }
         public void CustomerChanceBuyTemp()
         {
@@ -80,6 +81,24 @@ namespace LemonadeStandProject
                     customers[i].chanceToBuy += 10;
                 }
                 else if (player.recipe.pricePerCup > 0 && player.recipe.pricePerCup <= 0.20)
+                {
+                    customers[i].chanceToBuy += 20;
+                }
+            }
+        }
+        public void CustomerChanceBuyRecipe(Player player)
+        {
+            for(int i = 0; i < customers.Count; i++)
+            {
+                if (player.recipe.amountOfLemons > 4 && player.recipe.amountOfLemons <= 10)
+                {
+                    customers[i].chanceToBuy -= 20;
+                }
+                else if (player.recipe.amountOfLemons > 2 && player.recipe.amountOfLemons <= 4)
+                {
+                    customers[i].chanceToBuy += 10;
+                }
+                else if (player.recipe.amountOfLemons > 0 && player.recipe.amountOfLemons <= 2)
                 {
                     customers[i].chanceToBuy += 20;
                 }
