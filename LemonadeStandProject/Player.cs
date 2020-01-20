@@ -26,7 +26,15 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public void SellGlassOfLemonaid()
         {
-            pitcher.PourGlassOfLemonaid();
+            if (pitcher.cupsLeftInPitcher >= 1)
+            {
+                pitcher.PourGlassOfLemonaid();
+            }
+            else
+            {
+                CheckInventory();
+            }
+
         }
         public void ChooseYourUserName()
         {
@@ -57,6 +65,7 @@ namespace LemonadeStandProject
             {
                 Console.WriteLine("You have run out of product!");
                 Console.ReadLine();
+                //ADD end of day operation or not maybe
             }
         }
     }

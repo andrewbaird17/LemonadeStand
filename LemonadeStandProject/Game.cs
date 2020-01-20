@@ -234,6 +234,13 @@ namespace LemonadeStandProject
             }
             Console.ReadLine();    
         }
+        public void RunDaySimulation()
+        {
+                for (int i = 0; i < days. ; i++)
+                {
+
+                }
+        }
     }
 }
 

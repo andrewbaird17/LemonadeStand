@@ -38,7 +38,7 @@ namespace LemonadeStandProject
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.sugarcube.purchasePrice * numberOfItems;
-            AddSugarToInventory(numberOfItems);
+            AddSugarToInventory(numberOfItems, player);
             return saleCost;
         }
         public void AddSugarToInventory(int numberOfItems, Player player)
@@ -52,7 +52,7 @@ namespace LemonadeStandProject
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.icecube.purchasePrice * numberOfItems;
-            AddIceToInventory(numberOfItems);
+            AddIceToInventory(numberOfItems, player);
             return saleCost;
         }
         public void AddIceToInventory(int numberOfItems, Player player)
@@ -66,7 +66,7 @@ namespace LemonadeStandProject
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.cup.purchasePrice * numberOfItems;
-            AddCupToInventory(numberOfItems);
+            AddCupToInventory(numberOfItems, player);
             return saleCost;
         }
         public void AddCupToInventory(int numberOfItems, Player player)
