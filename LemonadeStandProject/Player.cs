@@ -24,16 +24,18 @@ namespace LemonadeStandProject
             pitcher = new Pitcher();
         }
         //Member Methods (CAN DO)
-        public void SellGlassOfLemonaid()
+        public bool SellGlassOfLemonaid()
         {
             if (pitcher.cupsLeftInPitcher >= 1)
             {
                 pitcher.PourGlassOfLemonaid();
                 SubtractCupsFromInventory();
+                return true;
             }
             else
             {
                 CheckInventory();
+                return false;
             }
 
         }
@@ -50,7 +52,7 @@ namespace LemonadeStandProject
             SubtractIceCubesFromInventory();
             pitcher.FillUpLemonaidInPitcher();
         }
-        public void CheckInventory()
+        public bool CheckInventory()
         {
             bool enoughLemons = true;
             bool enoughSugarCubes = true;
@@ -58,14 +60,16 @@ namespace LemonadeStandProject
             CheckForEnoughLemons(enoughLemons);
             CheckForEnoughSugarCubes(enoughSugarCubes);
             CheckForEnoughIceCubes(enoughIceCubes);
-            if ((enoughLemons == true) & (enoughIceCubes == true) & (enoughSugarCubes == true))
+            if ((enoughLemons == true) && (enoughIceCubes == true) && (enoughSugarCubes == true))
             {
                 CreateNewPitcher();
+                return true;
             }
             else
             {
                 Console.WriteLine("You have run out of product!");
                 Console.ReadLine();
+                return false;
                 //ADD end of day operation or not maybe
             }
         }

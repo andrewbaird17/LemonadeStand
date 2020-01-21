@@ -73,7 +73,7 @@ namespace LemonadeStandProject
                 UserInterface.CostDisplay(player);
                 UserInterface.InventoryDisplay(player);
                 UserInterface.RecipeDisplay(player);
-                UserChoices();            
+                UserChoices();
                 StartDay();
                 days[i].CreateCustomers(player);
                 begindaysMoney = player.wallet.Money;
@@ -117,7 +117,7 @@ namespace LemonadeStandProject
             UserInterface.InventoryDisplay(player);
             saleCost = Shopping();
             CreditCheck(saleCost);
-            
+
         }
         public double Shopping()
         {
@@ -302,11 +302,13 @@ namespace LemonadeStandProject
                 if (days[i].customers[j].chanceToBuy > 70)
                 {
                     Console.Clear();
-                    player.SellGlassOfLemonaid();
-                    player.wallet.Money += player.recipe.pricePerCup;
-                    servedCustomers += 1;
+                    //player.SellGlassOfLemonaid();
+                    if (player.SellGlassOfLemonaid() == true)
+                    {
+                        player.wallet.Money += player.recipe.pricePerCup;
+                        servedCustomers += 1;
+                    }
                 }
-
             }
         }
     }
