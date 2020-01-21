@@ -10,6 +10,7 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         public string userName;
+        public Store distributor;
         public Inventory inventory;
         public Wallet wallet;
         public Recipe recipe;
@@ -53,7 +54,7 @@ namespace LemonadeStandProject
         }
         public bool CheckInventory()
         {
-           
+
             bool enoughLemons = CheckForEnoughLemons();
             bool enoughSugarCubes = CheckForEnoughSugarCubes();
             bool enoughIceCubes = CheckForEnoughIceCubes();
@@ -72,7 +73,7 @@ namespace LemonadeStandProject
         }
         public void SubtractCupsFromInventory()
         {
-                inventory.cups.RemoveAt(0);
+            inventory.cups.RemoveAt(0);
         }
         public void SubtractLemonsFromInventory()
         {
@@ -137,5 +138,76 @@ namespace LemonadeStandProject
             recipe.ChangeAmountOfSugarCubes();
             recipe.ChangeAmountOfIceCubes();
         }
+        public void ContinueShopping(Player player)
+        {
+            Console.WriteLine("Would you like to continue Shopping?\n1. Yes\n2. No");
+            string UserInput = Console.ReadLine().ToLower();
+            do
+            {
+                GoToTheStore(player);
+            }
+            while ((UserInput == "1") || (UserInput == "yes"));
+        }
+        public void GoToTheStore(Player player)
+        {
+            Console.Clear();
+            double saleCost;
+            UserInterface.InventoryDisplay(player);
+            saleCost = Shopping(player);
+            distributor.CreditCheck(saleCost, player);
+        }
+        public double Shopping(Player player)
+        {
+            double saleCost;
+            Console.WriteLine("What would you like to buy:\n" +
+                "1. Lemons - Cost 0.25 per lemon\n" +
+                "2. Sugar Cube - Cost 0.10 per Sugar Cube\n" +
+                "3. Cups - Cost 0.05 per Cup \n" +
+                "4. Ice Cube - Cost 0.01 per Ice Cube \n" +
+                "5. Exit back to Main Menu");
+            switch (Console.ReadLine().ToLower())
+            {
+                case "1":
+                case "lemons":
+                case "lemon":
+                    Console.Clear();
+                    UserInterface.InventoryDisplay(player);
+                    saleCost = distributor.SellLemons(player);
+                    return saleCost;
+                case "2":
+                case "sugar":
+                case "sugar cubes":
+                    Console.Clear();
+                    UserInterface.InventoryDisplay(player);
+                    saleCost = distributor.SellSugar(player);
+                    return saleCost;
+
+                case "3":
+                case "cups":
+                case "cup":
+                    Console.Clear();
+                    UserInterface.InventoryDisplay(player);
+                    saleCost = distributor.SellCups(player);
+                    return saleCost;
+
+                case "4":
+                case "ice":
+                    Console.Clear();
+                    UserInterface.InventoryDisplay(player);
+                    saleCost = distributor.SellIce(player);
+                    return saleCost;
+                case "5":
+                case "exit":
+                    saleCost = 0;
+                    return saleCost;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Try using just the number associated with the choice!");
+                    GoToTheStore();
+                    saleCost = 0;
+                    return saleCost;
+            }
+        }
+
     }
 }

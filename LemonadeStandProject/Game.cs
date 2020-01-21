@@ -17,8 +17,6 @@ namespace LemonadeStandProject
         int servedCustomers;
         double begindaysMoney;
         double enddaysMoney;
-        string itemPurchase;
-
         //Constructor
         public Game()
         {
@@ -27,7 +25,6 @@ namespace LemonadeStandProject
             days = new List<Day>();
             player = new Player();
             store = new Store();
-            
             servedCustomers = 0;
         }
         //Member Methods (CAN DO)
@@ -86,120 +83,8 @@ namespace LemonadeStandProject
             }
             return numberOfDays;
         }
-        public void GoToTheStore()
-        {
-            Console.Clear();
-            double saleCost;
-            UserInterface.InventoryDisplay(player);
-            saleCost = Shopping();
-            CreditCheck(saleCost);
-        }
-        public double Shopping()
-        {
-            double saleCost;
-            Console.WriteLine("What would you like to buy:\n" +
-                "1. Lemons - Cost 0.25 per lemon\n" +
-                "2. Sugar Cube - Cost 0.10 per Sugar Cube\n" +
-                "3. Cups - Cost 0.05 per Cup \n" +
-                "4. Ice Cube - Cost 0.01 per Ice Cube \n" +
-                "5. Exit back to Main Menu");
-            switch (Console.ReadLine().ToLower())
-            {
-                case "1":
-                case "lemons":
-                case "lemon":
-                    Console.Clear();
-                    UserInterface.InventoryDisplay(player);
-                    saleCost = store.SellLemons(player);
-                    itemPurchase = "lemon";
-                    return saleCost;
-                case "2":
-                case "sugar":
-                case "sugar cubes":
-                    Console.Clear();
-                    UserInterface.InventoryDisplay(player);
-                    saleCost = store.SellSugar(player);
-                    itemPurchase = "sugar";
-                    return saleCost;
-
-                case "3":
-                case "cups":
-                case "cup":
-                    Console.Clear();
-                    UserInterface.InventoryDisplay(player);
-                    saleCost = store.SellCups(player);
-                    itemPurchase = "cup";
-                    return saleCost;
-
-                case "4":
-                case "ice":
-                    Console.Clear();
-                    UserInterface.InventoryDisplay(player);
-                    saleCost = store.SellIce(player);
-                    itemPurchase = "ice";
-                    return saleCost;
-                case "5":
-                case "exit":
-                    saleCost = 0;
-                    itemPurchase = "";
-                    return saleCost;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("Try using just the number associated with the choice!");
-                    GoToTheStore();
-                    saleCost = 0;
-                    return saleCost;
-            }
-        }
-        public void CreditCheck(double saleCost)
-        {
-            if (saleCost > player.wallet.Money)
-            {
-                Console.Clear();
-                Console.WriteLine("CARD DECLINED!\n" +
-                    "This costs $" + saleCost + ", you only have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money),2) + " remaining.\n\n");
-                ContinueShopping();
-            }
-            else
-            {
-                StorePurchase(saleCost);
-            }
-
-        }
-        public void StorePurchase(double saleCost)
-        {
-            Console.Clear();
-            Console.WriteLine("Your total comes to $" + decimal.Round(Convert.ToDecimal(saleCost),2) + "!\n");
-            player.wallet.Money -= saleCost;
-            store.AddItemsToInventory(store.numberOfItems, player, itemPurchase);
-            Console.WriteLine("You have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money),2) + " remaining.");
-            ContinueShopping();
-        }
-        public void ContinueShopping()
-        {
-            Console.WriteLine("Would you like to continue Shopping?\n1. Yes\n2. No");
-            switch (Console.ReadLine().ToLower())
-            {
-                case "1":
-                case "yes":
-                    Console.Clear();
-                    GoToTheStore();
-                    break;
-                case "2":
-                case "no":
-                    Console.Clear();
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("Please try entering only the number associated with your choice.");
-                    ContinueShopping();
-                    break;
-            }
-        }
         public void UserChoices()
         {
-            //while()
-            //{ }
             Console.WriteLine("What would you like to do?\n1: Go to Store\n2: See Week's Forecast\n3: Change Recipe\n4: Open Lemonade Stand");
             switch (Console.ReadLine().ToLower())
             {
@@ -207,7 +92,7 @@ namespace LemonadeStandProject
                 case "go to store":
                 case "store":
                 case "go":
-                    GoToTheStore();
+                    player.GoToTheStore(player);
                     break;
                 case "2":
                 case "week":

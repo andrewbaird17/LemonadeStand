@@ -10,7 +10,6 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         public Random random;
-        public string name;
         public int chanceToBuy;
         //Constructor
         public Customer(Random random, Player player, int temperature)

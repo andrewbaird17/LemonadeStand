@@ -10,9 +10,8 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)       
         Inventory storeInventory;
-        public Player player;
-        public int numberOfItems;
-        public double saleCost;
+        string itemPurchased;
+        int numberOfItems;
         //Constructor
         public Store()
         {
@@ -21,29 +20,33 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public double SellLemons(Player player)
         {
-            NumberItemsToPurchase();
-            saleCost = storeInventory.lemon.purchasePrice * numberOfItems;
+            itemPurchased = "lemon";
+            numberOfItems = NumberItemsToPurchase();
+            double saleCost = storeInventory.lemon.purchasePrice * numberOfItems;
             return saleCost;
         }
         public double SellSugar(Player player)
         {
-            NumberItemsToPurchase();
-            saleCost = storeInventory.sugarcube.purchasePrice * numberOfItems;
+            itemPurchased = "sugar";
+            numberOfItems = NumberItemsToPurchase();
+            double saleCost = storeInventory.sugarcube.purchasePrice * numberOfItems;
             return saleCost;
         }
         public double SellIce(Player player)
         {
-            NumberItemsToPurchase();
-            saleCost = storeInventory.icecube.purchasePrice * numberOfItems;
+            itemPurchased = "ice";
+            numberOfItems = NumberItemsToPurchase();
+            double saleCost = storeInventory.icecube.purchasePrice * numberOfItems;
             return saleCost;
         }
         public double SellCups(Player player)
         {
-            NumberItemsToPurchase();
-            saleCost = storeInventory.cup.purchasePrice * numberOfItems;
+            itemPurchased = "cups";
+            numberOfItems = NumberItemsToPurchase();
+            double saleCost = storeInventory.cup.purchasePrice * numberOfItems;
             return saleCost;
         }
-        public void AddItemsToInventory(int numberOfItems, Player player, string itemPurchase)
+        public void ItemAquiredByPlayer(int numberOfItems, Player player, string itemPurchase)
         {
             for (int i = 0; i < numberOfItems; i++)
             {
@@ -69,9 +72,34 @@ namespace LemonadeStandProject
                 }
             }
         }    
-        public void NumberItemsToPurchase()
+        public int NumberItemsToPurchase()
         {
             numberOfItems = UserInterface.GetUserInteger("How many items do you want?");
+            return numberOfItems;
+        }
+        public void CreditCheck(double saleCost, Player player)
+        {
+            if (saleCost > player.wallet.Money)
+            {
+                Console.Clear();
+                Console.WriteLine("CARD DECLINED!\n" +
+                    "This costs $" + saleCost + ", you only have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money), 2) + " remaining.\n\n");
+                player.ContinueShopping(player);
+            }
+            else
+            {
+                StorePurchase(saleCost, player);
+            }
+
+        }
+        public void StorePurchase(double saleCost, Player player)
+        {
+            Console.Clear();
+            Console.WriteLine("Your total comes to $" + decimal.Round(Convert.ToDecimal(saleCost), 2) + "!\n");
+            player.wallet.Money -= saleCost;
+            ItemAquiredByPlayer(numberOfItems, player, itemPurchased);
+            Console.WriteLine("You have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money), 2) + " remaining.");
+            player.ContinueShopping(player);
         }
     }
 }
