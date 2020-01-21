@@ -123,5 +123,14 @@ namespace LemonadeStandProject
                 return enoughIceCubes = false;
             }
         }
+        public void ChangeRecipe()
+        {
+            Console.WriteLine("Enter your desired recipe!\n" +
+                "Tip: Although you can skimp on ingredients the customers may not like it.\n");
+            recipe.ChangePriceOfCup();
+            recipe.ChangeAmountOfLemonsInRecipe();
+            recipe.ChangeAmountOfSugarCubes();
+            recipe.ChangeAmountOfIceCubes();
+        }
     }
 }

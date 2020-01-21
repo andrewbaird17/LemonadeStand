@@ -76,7 +76,6 @@ namespace LemonadeStandProject
                 player.inventory.cups.Add(new Cup());
             }
         }
-      
         public void NumberItemsToPurchase()
         {
             Console.WriteLine("How many items do you want?");

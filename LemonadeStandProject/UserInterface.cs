@@ -44,13 +44,12 @@ namespace LemonadeStandProject
         {
             Console.WriteLine(
             "You currently have: $" + player.wallet.Money + "\n\n" +
-            "Your Inventory is currently: \n" +
+            "Your Inventory: \n" +
             "Cups: " + player.inventory.cups.Count() + "\n" +
             "Lemons: " + player.inventory.lemons.Count() + "\n" +
             "Sugar Cubes: " + player.inventory.sugarCubes.Count() + "\n" +
             "Ice Cubes: " + player.inventory.icecubes.Count() + "\n");
         }
-
         public static void RecipeDisplay(Player player)
         {
             Console.WriteLine("Current Recipe:\n" +

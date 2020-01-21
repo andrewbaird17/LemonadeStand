@@ -67,11 +67,9 @@ namespace LemonadeStandProject
             {
                 UserInterface.UserDisplay(player, days[i]);
                 UserInterface.CostDisplay(player);
-                Console.ReadLine();
                 UserInterface.InventoryDisplay(player);
                 UserInterface.RecipeDisplay(player);
-                Console.ReadLine();
-                UserChoices();
+                UserChoices();            
                 StartDay();
                 days[i].CreateCustomers(player);
                 RunDaySimulation(i);
@@ -212,24 +210,36 @@ namespace LemonadeStandProject
             {
                 case "1":
                 case "go to store":
+                case "store":
+                case "go":
                     GoToTheStore();
                     break;
                 case "2":
+                case "week":
+                case "see week":
+                case "see week's":
                 case "forecast":
+                case "see weeks forecast":
+                case "see week's forecast":
                     WeatherForecast();
                     Console.Clear();
                     break;
                 case "3":
                 case "change recipe":
+                case "change":
+                case "recipe":
                     Console.Clear();
+                    UserInterface.CostDisplay(player);
                     UserInterface.RecipeDisplay(player);
-                    Console.WriteLine("To keep recipe the same, please enter the same values when prompted.");
-                    player.recipe.ChangeAmountOfIceCubes();
-                    player.recipe.ChangeAmountOfLemonsInRecipe();
-                    player.recipe.ChangeAmountOfSugarCubes();
+                    player.ChangeRecipe();
                     break;
                 case "4":
                 case "open":
+                case "open lemonade":
+                case "open lemonade stand":
+                case "lemonade":
+                case "lemonade stand":
+                case "stand":
                     break;
                 default:
                     Console.Clear();
