@@ -23,6 +23,7 @@ namespace LemonadeStandProject
             recipe = new Recipe();
             inventory = new Inventory();
             pitcher = new Pitcher();
+            distributor = new Store();
         }
         //Member Methods (CAN DO)
         public bool SellGlassOfLemonaid()
@@ -142,11 +143,11 @@ namespace LemonadeStandProject
         {
             Console.WriteLine("Would you like to continue Shopping?\n1. Yes\n2. No");
             string UserInput = Console.ReadLine().ToLower();
-            do
+            while ((UserInput == "1") || (UserInput == "yes"))
             {
-                GoToTheStore(player);
+                GoToTheStore(player);      
             }
-            while ((UserInput == "1") || (UserInput == "yes"));
+   
         }
         public void GoToTheStore(Player player)
         {
@@ -198,16 +199,16 @@ namespace LemonadeStandProject
                     return saleCost;
                 case "5":
                 case "exit":
+                    ContinueShopping(player);
                     saleCost = 0;
                     return saleCost;
                 default:
                     Console.Clear();
                     Console.WriteLine("Try using just the number associated with the choice!");
-                    GoToTheStore();
+                    ContinueShopping(player);
                     saleCost = 0;
                     return saleCost;
             }
         }
-
     }
 }

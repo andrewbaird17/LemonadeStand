@@ -41,7 +41,7 @@ namespace LemonadeStandProject
         }
         public double SellCups(Player player)
         {
-            itemPurchased = "cups";
+            itemPurchased = "cup";
             numberOfItems = NumberItemsToPurchase();
             double saleCost = storeInventory.cup.purchasePrice * numberOfItems;
             return saleCost;
