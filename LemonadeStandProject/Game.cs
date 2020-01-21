@@ -10,6 +10,7 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         Random random;
+        
         Player player;
         List<Day> days;
         Store store;
@@ -175,7 +176,7 @@ namespace LemonadeStandProject
             {
                 Console.Clear();
                 Console.WriteLine("CARD DECLINED!\n" +
-                    "This costs $" + saleCost + ", you only have $" + player.wallet.Money + " remaining.\n\n");
+                    "This costs $" + saleCost + ", you only have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money),2) + " remaining.\n\n");
                 ContinueShopping();
             }
             else
@@ -187,10 +188,10 @@ namespace LemonadeStandProject
         public void StorePurchase(double saleCost)
         {
             Console.Clear();
-            Console.WriteLine("Your total comes to $" + saleCost + "!\n");
+            Console.WriteLine("Your total comes to $" + decimal.Round(Convert.ToDecimal(saleCost),2) + "!\n");
             player.wallet.Money -= saleCost;
             store.AddItemsToInventory(store.numberOfItems, player, itemPurchase);
-            Console.WriteLine("You have $" + player.wallet.Money + " remaining.");
+            Console.WriteLine("You have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money),2) + " remaining.");
             ContinueShopping();
         }
         public void ContinueShopping()
