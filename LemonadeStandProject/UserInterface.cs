@@ -62,10 +62,10 @@ namespace LemonadeStandProject
         {
             Console.WriteLine("Current Cost per Cup: $" + player.recipe.pricePerCup);
         }
-        public static void EndOfDayDisplay(Player player, Day day, int servedCustomers)
+        public static void EndOfDayDisplay(Player player, Day day, int servedCustomers, double begindaysMoney, double enddaysMoney)
         {
             Console.WriteLine("End of day Results:\n" +
-               "Todays Profit/Loss: " + "\n" +
+               "Todays Profit/Loss: " + (enddaysMoney - begindaysMoney)+"\n" +
                "Total Profit/Loss: " + (player.wallet.Money - 20) +"\n" +
                "Customers: "+ servedCustomers + "out of " + day.customers.Count+ "\n\n " +
                "Press Enter to continue to next day");

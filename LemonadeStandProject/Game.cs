@@ -14,7 +14,9 @@ namespace LemonadeStandProject
         List<Day> days;
         Store store;
         int numberOfDays;
-        public int servedCustomers;
+        int servedCustomers;
+        double begindaysMoney;
+        double enddaysMoney;
 
         //Constructor
         public Game()
@@ -74,9 +76,12 @@ namespace LemonadeStandProject
                 UserChoices();
                 StartDay();
                 days[i].CreateCustomers(player);
+                begindaysMoney = player.wallet.Money;
                 RunDaySimulation(i);
-                UserInterface.EndOfDayDisplay(player, days[i], servedCustomers);
+                enddaysMoney = player.wallet.Money;
+                UserInterface.EndOfDayDisplay(player, days[i], servedCustomers, begindaysMoney, enddaysMoney);
                 i++;
+                servedCustomers = 0;
             } while (i < numberOfDays);
         }
         public void CreateLengthOfGame()

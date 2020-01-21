@@ -20,7 +20,7 @@ namespace LemonadeStandProject
         }
         public void PourGlassOfLemonaid()
         {
-            cupsLeftInPitcher = -1;
+            cupsLeftInPitcher -= 1;
         }
 
     }
