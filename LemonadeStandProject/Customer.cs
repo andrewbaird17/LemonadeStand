@@ -24,7 +24,7 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public void LikelihoodToBuy()
         {
-            chanceToBuy = random.Next(40, 60);
+            chanceToBuy = random.Next(40, 61);
         }
         public void CustomerChanceBuyTemp(int temperature)
         {

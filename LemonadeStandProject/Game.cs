@@ -269,7 +269,6 @@ namespace LemonadeStandProject
                 if (days[i].customers[j].chanceToBuy > 70)
                 {
                     Console.Clear();
-                    //player.SellGlassOfLemonaid();
                     if (player.SellGlassOfLemonaid() == true)
                     {
                         player.wallet.Money += player.recipe.pricePerCup;

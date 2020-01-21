@@ -9,12 +9,9 @@ namespace LemonadeStandProject
     abstract public class Weather
     {
         //Member Variables (HAS A)
-
         public string condition;
         public int highestNumCustomers;
         public int lowestNumCustomers;
-        
-
         //Constructor
         public Weather()
         {
