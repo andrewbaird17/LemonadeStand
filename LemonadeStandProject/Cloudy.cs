@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 namespace LemonadeStandProject
 {
     public class Cloudy : Weather
-    {//Member Variables (HAS A)
+    {
+        //Member Variables (HAS A)
 
         //Constructor
         public Cloudy()
