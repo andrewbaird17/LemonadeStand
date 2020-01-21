@@ -37,7 +37,6 @@ namespace LemonadeStandProject
                 CheckInventory();
                 return false;
             }
-
         }
         public void ChooseYourUserName()
         {

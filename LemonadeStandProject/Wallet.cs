@@ -16,13 +16,5 @@ namespace LemonadeStandProject
             Money = 20;
         }
         //Member Methods (CAN DO)
-        public void SpendMoney()
-        {
-
-        }
-        public void RecieveMoney()
-        {
-
-        }
     }
 }

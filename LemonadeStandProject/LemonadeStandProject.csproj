@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Child.cs" />
     <Compile Include="Cloudy.cs" />
     <Compile Include="Cup.cs" />
     <Compile Include="Customer.cs" />
