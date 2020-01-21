@@ -15,7 +15,7 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public static void StartScreen()
         {
-            Console.WriteLine("Welcome your Lemonaid Stand!\n\nPlease press enter to continue to the main menu!");
+            Console.WriteLine("Welcome your Lemonade Stand!\n\nPlease press enter to continue to the main menu!");
             Console.ReadLine();
         }
         public static void Instructions()
@@ -37,7 +37,7 @@ namespace LemonadeStandProject
         }
         public static void UserDisplay(Player player, Day days)
         {
-            Console.WriteLine(player.userName + "'s Lemonaid Stand\n" +
+            Console.WriteLine(player.userName + "'s Lemonade Stand\n" +
                 "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition + "\n");
         }
         public static void InventoryDisplay(Player player)
