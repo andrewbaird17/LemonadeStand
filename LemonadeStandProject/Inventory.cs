@@ -13,8 +13,7 @@ namespace LemonadeStandProject
         public List<IceCube> icecubes;
         public List<Cup> cups;
         public List<SugarCube> sugarCubes;
-        Recipe 
-            recipe;
+        Recipe recipe;
         public Lemon lemon;
         public SugarCube sugarcube;
         public IceCube icecube;
