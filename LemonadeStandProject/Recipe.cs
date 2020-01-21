@@ -32,7 +32,7 @@ namespace LemonadeStandProject
         }
         public void ChangeAmountOfIceCubes()
         {
-            amountOfIceCubes = UserInterface.GetUserInteger("Enter new amount of sugar cubes for your recipe!");
+            amountOfIceCubes = UserInterface.GetUserInteger("Enter new amount of ice cubes for your recipe!");
         }
         public void ChangePriceOfCup()
         {

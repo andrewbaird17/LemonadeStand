@@ -74,10 +74,10 @@ namespace LemonadeStandProject
         {           
             temperature = random.Next(40, 115);
         }
-        public void WeatherForecast(List <Day>days)
+        public void WeatherForecast(List<Day> days)
         {
             Console.Clear();
-            for (int i = 0; i < numberOfDays; i++)
+            for (int i = 0; i < days.Count; i++)
             {
                 Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n\n");
             }
@@ -90,7 +90,6 @@ namespace LemonadeStandProject
             {
                 //customers = new List<Customer>();
                 customers.Add(new Customer(random));
-                customers[i].name = "Customer" + String.Concat(i + 1);
                 customers[i].LikelihoodToBuy();
             }
 

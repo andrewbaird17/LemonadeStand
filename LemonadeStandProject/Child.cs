@@ -6,21 +6,16 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class Customer
+    public class Child : Customer
     {
         //Member Variables (HAS A)
-        public Random random;
-        public int chanceToBuy;
+
         //Constructor
-        public Customer(Random random)
+        public Child(Random random, Day day, Player player)
         {
             this.random = random;
         }
         //Member Methods (CAN DO)
-        public void LikelihoodToBuy()
-        {
-            chanceToBuy = random.Next(40, 61);
-        }
+
     }
 }
-
