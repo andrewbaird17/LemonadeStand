@@ -55,6 +55,8 @@
     <Compile Include="Inventory.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Lemon.cs" />
+    <Compile Include="Man.cs" />
+    <Compile Include="OldWoman.cs" />
     <Compile Include="Overcast.cs" />
     <Compile Include="Pitcher.cs" />
     <Compile Include="Player.cs" />

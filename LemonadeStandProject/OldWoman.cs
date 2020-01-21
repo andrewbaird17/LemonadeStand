@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class Child : Customer
+    public class OldWoman : Customer
     {
         //Member Variables (HAS A)
 
         //Constructor
-        public Child(Random random, Player player, int temperature)
+        public OldWoman(Random random, Player player, int temperature)
         {
             this.random = random;
             LikelihoodToBuy();
@@ -22,47 +22,51 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public override void CustomerChanceBuyTemp(int temperature)
         {
-            if (temperature >= 40 && temperature < 45)
+            if (temperature >= 40 && temperature < 50)
             {
-                chanceToBuy -= 20;
+                chanceToBuy -= 10;
             }
-            else if (temperature >= 45 && temperature < 80)
+            else if (temperature >= 50 && temperature < 65)
+            {
+                chanceToBuy += 20;
+            }
+            else if (temperature >= 65 && temperature < 85)
             {
                 chanceToBuy += 10;
             }
-            else if (temperature >= 80)
+            else if (temperature >= 85)
             {
-                chanceToBuy += 30;
+                chanceToBuy -= 20;
             }
         }
         public override void CustomerChanceBuyPrice(Player player)
         {
-            if (player.recipe.pricePerCup > 0.30)
+            if (player.recipe.pricePerCup > 0.40)
             {
-                chanceToBuy -= 20;
+                chanceToBuy -= 10;
             }
-            else if (player.recipe.pricePerCup > 0.10 && player.recipe.pricePerCup <= 0.30)
+            else if (player.recipe.pricePerCup > 0.25 && player.recipe.pricePerCup <= 0.40)
             {
                 chanceToBuy += 10;
             }
-            else if (player.recipe.pricePerCup > 0 && player.recipe.pricePerCup <= 0.10)
+            else if (player.recipe.pricePerCup > 0 && player.recipe.pricePerCup <= 0.25)
             {
                 chanceToBuy += 20;
             }
         }
         public override void CustomerChanceBuyRecipe(Player player)
         {
-            if (player.recipe.amountOfSugarCubes > 4)
+            if (player.recipe.amountOfLemons > 4)
             {
-                chanceToBuy += 20;
+                chanceToBuy += 30;
             }
-            else if (player.recipe.amountOfSugarCubes > 2 && player.recipe.amountOfSugarCubes <= 4)
+            else if (player.recipe.amountOfLemons > 2 && player.recipe.amountOfLemons <= 4)
             {
-                chanceToBuy += 10;
+                chanceToBuy += 15;
             }
-            else if (player.recipe.amountOfSugarCubes > 0 && player.recipe.amountOfSugarCubes <= 2)
+            else if (player.recipe.amountOfLemons > 0 && player.recipe.amountOfLemons <= 2)
             {
-                chanceToBuy -= 20;
+                chanceToBuy -= 15;
             }
         }
     }

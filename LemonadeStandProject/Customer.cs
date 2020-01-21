@@ -6,26 +6,21 @@ using System.Threading.Tasks;
 
 namespace LemonadeStandProject
 {
-    public class Customer
+    abstract public class Customer
     {
         //Member Variables (HAS A)
         public Random random;
         public int chanceToBuy;
         //Constructor
-        public Customer(Random random, Player player, int temperature)
+        public Customer()
         {
-            this.random = random;
-            LikelihoodToBuy();
-            CustomerChanceBuyTemp(temperature);
-            CustomerChanceBuyRecipe(player);
-            CustomerChanceBuyPrice(player);
         }
         //Member Methods (CAN DO)
-        public void LikelihoodToBuy()
+        public virtual void LikelihoodToBuy()
         {
             chanceToBuy = random.Next(40, 61);
         }
-        public void CustomerChanceBuyTemp(int temperature)
+        public virtual void CustomerChanceBuyTemp(int temperature)
         {
             if (temperature >= 40 && temperature <= 60)
             {
@@ -40,7 +35,7 @@ namespace LemonadeStandProject
                 chanceToBuy += 20;
             }
         }
-        public void CustomerChanceBuyPrice(Player player)
+        public virtual void CustomerChanceBuyPrice(Player player)
         {
 
             if (player.recipe.pricePerCup > 0.50 && player.recipe.pricePerCup <= 0.75)
@@ -57,7 +52,7 @@ namespace LemonadeStandProject
             }
 
         }
-        public void CustomerChanceBuyRecipe(Player player)
+        public virtual void CustomerChanceBuyRecipe(Player player)
         {
             if (player.recipe.amountOfLemons > 4 && player.recipe.amountOfLemons <= 10)
             {

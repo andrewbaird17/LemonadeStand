@@ -10,6 +10,7 @@ namespace LemonadeStandProject
     {
         //Member Variables (HAS A)
         Random random;
+        public Customer customer;
         public Weather weather;
         public int temperature;
         public int randomNumberOfCustomers;
@@ -88,7 +89,21 @@ namespace LemonadeStandProject
         {
             for (int i = 0; i < randomNumberOfCustomers; i++)
             {
-                customers.Add(new Customer(random, player, temperature));
+                switch (random.Next(0, 3))
+                {
+                    case 0:
+                        customer = new Child(random, player, temperature);
+                        customers.Add(customer);
+                        break;
+                    case 1:
+                        customer = new OldWoman(random, player, temperature);
+                        customers.Add(customer);
+                        break;
+                    case 2:
+                        customer = new Man(random, player, temperature);
+                        customers.Add(customer);
+                        break;
+                }
             }
         }
     }
