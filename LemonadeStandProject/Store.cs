@@ -71,8 +71,7 @@ namespace LemonadeStandProject
         }    
         public void NumberItemsToPurchase()
         {
-            Console.WriteLine("How many items do you want?");
-            Int32.TryParse(Console.ReadLine(), out numberOfItems);
+            numberOfItems = UserInterface.GetUserInteger("How many items do you want?");
         }
     }
 }

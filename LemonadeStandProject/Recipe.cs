@@ -24,18 +24,15 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public void ChangeAmountOfLemonsInRecipe()
         {
-            Console.WriteLine("Enter new amount of lemons for your recipe!");
-            Int32.TryParse(Console.ReadLine(), out amountOfLemons);          
+            amountOfLemons = UserInterface.GetUserInteger("Enter new amount of lemons for your recipe!");
         }
         public void ChangeAmountOfSugarCubes()
         {
-            Console.WriteLine("Enter new amount of sugar cubes for your recipe!");
-            Int32.TryParse(Console.ReadLine(), out amountOfSugarCubes);
+            amountOfSugarCubes = UserInterface.GetUserInteger("Enter new amount of sugar cubes for your recipe!");
         }
         public void ChangeAmountOfIceCubes()
-        { 
-            Console.WriteLine("Enter new amount of ice cubes for your recipe!");
-            Int32.TryParse(Console.ReadLine(), out amountOfIceCubes);
+        {
+            amountOfIceCubes = UserInterface.GetUserInteger("Enter new amount of sugar cubes for your recipe!");
         }
         public void ChangePriceOfCup()
         {

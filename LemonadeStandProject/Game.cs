@@ -68,11 +68,7 @@ namespace LemonadeStandProject
             CreateLengthOfGame();
             do
             {
-                UserInterface.UserDisplay(player, days[i]);
-                Console.WriteLine("Day: " + (i + 1) + "\n");
-                UserInterface.CostDisplay(player);
-                UserInterface.InventoryDisplay(player);
-                UserInterface.RecipeDisplay(player);
+                UserInterface.BeginningDayDisplay(player, days[i], i);
                 UserChoices();
                 StartDay();
                 days[i].CreateCustomers(player);
@@ -93,7 +89,7 @@ namespace LemonadeStandProject
                 days.Add(new Day(random));
                 days[i].ChooseCondition();
                 days[i].ChooseTemp();
-                days[i].ChooseNumberOfCustomers(days[i].weather);
+                days[i].ChooseNumberOfCustomers();
             }
         }
         public int SelectNumberDays()
@@ -223,6 +219,8 @@ namespace LemonadeStandProject
         }
         public void UserChoices()
         {
+            //while()
+            //{ }
             Console.WriteLine("What would you like to do?\n1: Go to Store\n2: See Week's Forecast\n3: Change Recipe\n4: Open Lemonade Stand");
             switch (Console.ReadLine().ToLower())
             {

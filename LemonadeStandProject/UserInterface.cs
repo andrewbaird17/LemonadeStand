@@ -40,8 +40,15 @@ namespace LemonadeStandProject
             Console.WriteLine(player.userName + "'s Lemonade Stand\n" +
                 "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition);
         }
+        public static int GetUserInteger(string output)
+        {
+            Console.WriteLine(output);
+            Int32.TryParse(Console.ReadLine(), out int result);
+            return result;
+        }
         public static void InventoryDisplay(Player player)
         {
+            //Console.WriteLine($"hello this is a variable {player.recipe}");
             Console.WriteLine(
             "You currently have: $" + player.wallet.Money + "\n\n" +
             "Your Inventory: \n" +
@@ -60,6 +67,14 @@ namespace LemonadeStandProject
         public static void CostDisplay(Player player)
         {
             Console.WriteLine("Current Cost per Cup: $" + player.recipe.pricePerCup);
+        }
+        public static void BeginningDayDisplay(Player player, Day days, int i)
+        {
+            UserDisplay(player, days);
+            Console.WriteLine("Day: " + (i + 1) + "\n");
+            CostDisplay(player);
+            InventoryDisplay(player);
+            RecipeDisplay(player);
         }
         public static void EndOfDayDisplay(Player player, Day day, int servedCustomers, double begindaysMoney, double enddaysMoney)
         {

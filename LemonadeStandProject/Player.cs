@@ -54,12 +54,10 @@ namespace LemonadeStandProject
         }
         public bool CheckInventory()
         {
-            bool enoughLemons = true;
-            bool enoughSugarCubes = true;
-            bool enoughIceCubes = true;
-            CheckForEnoughLemons(enoughLemons);
-            CheckForEnoughSugarCubes(enoughSugarCubes);
-            CheckForEnoughIceCubes(enoughIceCubes);
+           
+            bool enoughLemons = CheckForEnoughLemons();
+            bool enoughSugarCubes = CheckForEnoughSugarCubes();
+            bool enoughIceCubes = CheckForEnoughIceCubes();
             if ((enoughLemons == true) && (enoughIceCubes == true) && (enoughSugarCubes == true))
             {
                 CreateNewPitcher();
@@ -98,38 +96,37 @@ namespace LemonadeStandProject
                 inventory.icecubes.RemoveAt(0);
             }
         }
-        public bool CheckForEnoughLemons(bool enoughLemons)
+        public bool CheckForEnoughLemons()
         {
             if (inventory.lemons.Count() >= recipe.amountOfLemons)
             {
-                return enoughLemons = true;
+                return true;
             }
             else
             {
-                return enoughLemons = false;
+                return false;
             }
-
         }
-        public bool CheckForEnoughSugarCubes(bool enoughSugarCubes)
+        public bool CheckForEnoughSugarCubes()
         {
             if (inventory.sugarCubes.Count() >= recipe.amountOfLemons)
             {
-                return enoughSugarCubes = true;
+                return true;
             }
             else
             {
-                return enoughSugarCubes = false;
+                return false;
             }
         }
-        public bool CheckForEnoughIceCubes(bool enoughIceCubes)
+        public bool CheckForEnoughIceCubes()
         {
             if (inventory.icecubes.Count() >= recipe.amountOfIceCubes)
             {
-                return enoughIceCubes = true;
+                return true;
             }
             else
             {
-                return enoughIceCubes = false;
+                return false;
             }
         }
         public void ChangeRecipe()
