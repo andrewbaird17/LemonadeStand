@@ -17,7 +17,7 @@ namespace LemonadeStandProject
         int servedCustomers;
         double begindaysMoney;
         double enddaysMoney;
-        public string itemPurchase;
+        string itemPurchase;
 
         //Constructor
         public Game()
@@ -182,7 +182,7 @@ namespace LemonadeStandProject
             {
                 Console.Clear();
                 Console.WriteLine("CARD DECLINED!\n" +
-                    "This costs $" + saleCost + ", you only have $" + player.wallet.Money + "remaining.\n\n");
+                    "This costs $" + saleCost + ", you only have $" + player.wallet.Money + " remaining.\n\n");
                 ContinueShopping();
             }
             else

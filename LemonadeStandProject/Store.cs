@@ -19,33 +19,28 @@ namespace LemonadeStandProject
             storeInventory = new Inventory();
         }
         //Member Methods (CAN DO)
-
         public double SellLemons(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.lemon.purchasePrice * numberOfItems;
-            //AddLemonsToInventory(numberOfItems, player);
             return saleCost;
         }
         public double SellSugar(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.sugarcube.purchasePrice * numberOfItems;
-            //AddSugarToInventory(numberOfItems, player);
             return saleCost;
         }
         public double SellIce(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.icecube.purchasePrice * numberOfItems;
-            //AddIceToInventory(numberOfItems, player);
             return saleCost;
         }
         public double SellCups(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.cup.purchasePrice * numberOfItems;
-            //AddCupToInventory(numberOfItems, player);
             return saleCost;
         }
         public void AddItemsToInventory(int numberOfItems, Player player, string itemPurchase)
@@ -73,7 +68,7 @@ namespace LemonadeStandProject
                     break;
                 }
             }
-        }
+        }    
         public void NumberItemsToPurchase()
         {
             Console.WriteLine("How many items do you want?");
