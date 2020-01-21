@@ -9,18 +9,17 @@ namespace LemonadeStandProject
     public class Customer
     {
         //Member Variables (HAS A)
+        Random random;
         public string name;
         public int chanceToBuy;
-        Random random;
         //Constructor
-        public Customer()
+        public Customer(Random random)
         {
-            
+            this.random = random;
         }
         //Member Methods (CAN DO)
         public void LikelihoodToBuy()
         {
-            random = new Random();
             chanceToBuy = random.Next(40, 60);
         }
 

@@ -14,6 +14,7 @@ namespace LemonadeStandProject
         List<Day> days;
         Store store;
         int numberOfDays;
+        public int servedCustomers;
 
         //Constructor
         public Game()
@@ -22,7 +23,7 @@ namespace LemonadeStandProject
             player = new Player();
             store = new Store();
             random = new Random();
-
+            servedCustomers = 0;
         }
         //Member Methods (CAN DO)
         public void StartUp()
@@ -70,9 +71,11 @@ namespace LemonadeStandProject
                 UserInterface.InventoryDisplay(player);
                 UserInterface.RecipeDisplay(player);
                 Console.ReadLine();
-                Console.Clear();
                 UserChoices();
+                StartDay();
+                days[i].CreateCustomers(player);
                 RunDaySimulation(i);
+                UserInterface.EndOfDayDisplay(player, days[i], servedCustomers);
                 i++;
             } while (i < numberOfDays);
         }
@@ -152,9 +155,7 @@ namespace LemonadeStandProject
                     return saleCost;
                 case "5":
                 case "exit":
-                    UserChoices();
                     saleCost = 0;
-
                     return saleCost;
                 default:
                     Console.Clear();
@@ -196,7 +197,6 @@ namespace LemonadeStandProject
                 case "2":
                 case "no":
                     Console.Clear();
-                    UserChoices();
                     break;
                 default:
                     Console.Clear();
@@ -218,7 +218,6 @@ namespace LemonadeStandProject
                 case "forecast":
                     WeatherForecast();
                     Console.Clear();
-                    UserChoices();
                     break;
                 case "3":
                 case "change recipe":
@@ -235,7 +234,26 @@ namespace LemonadeStandProject
                 default:
                     Console.Clear();
                     Console.WriteLine("Please Try Entering the number associated with the option you would like to do.");
+                    break;
+            }
+        }
+        public void StartDay()
+        {
+            Console.WriteLine("Would you like to start selling?");
+            switch (Console.ReadLine().ToLower())
+            {
+                case "1":
+                case "yes":
+                    break;
+                case "2":
+                case "no":
+                    Console.Clear();
                     UserChoices();
+                    break;
+                default:
+                    Console.Clear();
+                    Console.WriteLine("Please try entering only the number associated with your choice.");
+                    StartDay();
                     break;
             }
         }
@@ -244,21 +262,23 @@ namespace LemonadeStandProject
             Console.Clear();
             for (int i = 0; i < numberOfDays; i++)
             {
-                Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n\nPress enter to go back to the main screen." +
-                    "" +
-                    "");
-            }        
+                Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n\n");
+            }
+            Console.WriteLine("Press enter to go back to the main screen.");
             Console.ReadLine();
         }
         public void RunDaySimulation(int i)
-        {
+        {   
             for (int j = 0; j < days[i].randomNumberOfCustomers; j++)
             {
                 if (days[i].customers[j].chanceToBuy > 70)
                 {
+                    Console.Clear();
                     player.SellGlassOfLemonaid();
                     player.wallet.Money += player.recipe.pricePerCup;
+                    servedCustomers += 1;
                 }
+                
             }
         }
     }
