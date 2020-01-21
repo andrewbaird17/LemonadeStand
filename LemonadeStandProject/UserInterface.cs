@@ -9,7 +9,7 @@ namespace LemonadeStandProject
     public static class UserInterface
     {
         //Member Variables (HAS A)
-
+        
         //Constructor
 
         //Member Methods (CAN DO)
@@ -66,7 +66,7 @@ namespace LemonadeStandProject
         }
         public static void CostDisplay(Player player)
         {
-            Console.WriteLine("Current Cost per Cup: $" + player.recipe.pricePerCup);
+            Console.WriteLine("Current Cost per Cup: $" + Convert.ToDecimal(player.recipe.pricePerCup));
         }
         public static void BeginningDayDisplay(Player player, Day days, int i)
         {
@@ -79,8 +79,8 @@ namespace LemonadeStandProject
         public static void EndOfDayDisplay(Player player, Day day, int servedCustomers, double begindaysMoney, double enddaysMoney)
         {
             Console.WriteLine("End of day Results:\n" +
-               "Todays Profit/Loss: " + (enddaysMoney - begindaysMoney)+"\n" +
-               "Total Profit/Loss: " + (player.wallet.Money - 20) +"\n" +
+               "Todays Profit/Loss: " + decimal.Round(Convert.ToDecimal(enddaysMoney - begindaysMoney), 2)+"\n" +
+               "Total Profit/Loss: " + decimal.Round(Convert.ToDecimal(player.wallet.Money - 20),2) +"\n" +
                "Customers: "+ servedCustomers + " out of " + day.customers.Count+ "\n\n " +
                "Press Enter to continue to next day");
             Console.ReadLine();

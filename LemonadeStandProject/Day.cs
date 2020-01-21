@@ -15,13 +15,10 @@ namespace LemonadeStandProject
         public int randomNumberOfCustomers;
         public int numberOfDays;
         public List<Customer> customers;
-
-        List<Weather> listOfWeather;
-        //Constructor
         public Day(Random random)
         {
+            this.random = random; 
             customers = new List<Customer>();
-            this.random = random;
             ChooseCondition();
             ChooseTemp();
             ChooseNumberOfCustomers();
@@ -47,7 +44,31 @@ namespace LemonadeStandProject
         }
         public void ChooseCondition()
         {           
-            weather = listOfWeather[random.Next(listOfWeather.Count)];            
+           int randCondition = random.Next(0,7);
+            switch (randCondition)
+            {
+                case 0:
+                    weather = new Foggy();
+                    break;
+                case 1:
+                    weather = new Cloudy();
+                    break;
+                case 2:
+                    weather = new Hazy();
+                    break;
+                case 3:
+                    weather = new Overcast();
+                    break;
+                case 4:
+                    weather = new Rainy();
+                    break;
+                case 5:
+                    weather = new Sunny();
+                    break;
+                case 6:
+                    weather = new Windy();
+                    break;
+            }
         }  
         public void ChooseTemp()
         {           

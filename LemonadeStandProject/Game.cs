@@ -22,11 +22,12 @@ namespace LemonadeStandProject
         //Constructor
         public Game()
         {
+            random = new Random();
             day = new Day(random);
             days = new List<Day>();
             player = new Player();
             store = new Store();
-            random = new Random();
+            
             servedCustomers = 0;
         }
         //Member Methods (CAN DO)
@@ -56,12 +57,12 @@ namespace LemonadeStandProject
                     break;
             }
         }
-        public void RunGame(int numberOfDays = 0)
+        public void RunGame()
         {
-            Console.Clear();
             int i = 0;
+            Console.Clear();
             player.ChooseYourUserName();
-            CreateLengthOfGame();
+            int numberOfDays = CreateLengthOfGame();
             do
             {
                 UserInterface.BeginningDayDisplay(player, days[i], i);
@@ -75,7 +76,6 @@ namespace LemonadeStandProject
                 i++;
                 servedCustomers = 0;
             } while (i < numberOfDays);
-            // End of Game Results
         }
         public int CreateLengthOfGame()
         {
@@ -93,7 +93,6 @@ namespace LemonadeStandProject
             UserInterface.InventoryDisplay(player);
             saleCost = Shopping();
             CreditCheck(saleCost);
-
         }
         public double Shopping()
         {
@@ -158,7 +157,7 @@ namespace LemonadeStandProject
             {
                 Console.Clear();
                 Console.WriteLine("CARD DECLINED!\n" +
-                    "This costs $" + saleCost + ", you only have $" + player.wallet.Money + " remaining.\n\n");
+                    "This costs $" + saleCost + ", you only have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money),2) + " remaining.\n\n");
                 ContinueShopping();
             }
             else
@@ -170,10 +169,10 @@ namespace LemonadeStandProject
         public void StorePurchase(double saleCost)
         {
             Console.Clear();
-            Console.WriteLine("Your total comes to $" + saleCost + "!\n");
+            Console.WriteLine("Your total comes to $" + decimal.Round(Convert.ToDecimal(saleCost),2) + "!\n");
             player.wallet.Money -= saleCost;
             store.AddItemsToInventory(store.numberOfItems, player, itemPurchase);
-            Console.WriteLine("You have $" + player.wallet.Money + " remaining.");
+            Console.WriteLine("You have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money),2) + " remaining.");
             ContinueShopping();
         }
         public void ContinueShopping()
