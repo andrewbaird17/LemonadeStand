@@ -25,26 +25,22 @@ namespace LemonadeStandProject
         public void ChangeAmountOfLemonsInRecipe()
         {
             Console.WriteLine("Enter new amount of lemons for your recipe!");
-            String userInput = Console.ReadLine();
-            Int32.TryParse(userInput, out amountOfLemons);          
+            Int32.TryParse(Console.ReadLine(), out amountOfLemons);          
         }
         public void ChangeAmountOfSugarCubes()
         {
             Console.WriteLine("Enter new amount of sugar cubes for your recipe!");
-            String userInput = Console.ReadLine();
-            Int32.TryParse(userInput, out amountOfSugarCubes);
+            Int32.TryParse(Console.ReadLine(), out amountOfSugarCubes);
         }
         public void ChangeAmountOfIceCubes()
-        {
+        { 
             Console.WriteLine("Enter new amount of ice cubes for your recipe!");
-            String userInput = Console.ReadLine();
-            Int32.TryParse(userInput, out amountOfIceCubes);
+            Int32.TryParse(Console.ReadLine(), out amountOfIceCubes);
         }
         public void ChangePriceOfCup()
         {
-            Console.WriteLine("Enter new amount of lemons for your recipe!");
-            String userInput = Console.ReadLine();
-            double.TryParse(userInput, out pricePerCup);
+            Console.WriteLine("Enter the new price of your glass of lemonade!");
+            double.TryParse(Console.ReadLine(), out pricePerCup);
         }
     }
 }
