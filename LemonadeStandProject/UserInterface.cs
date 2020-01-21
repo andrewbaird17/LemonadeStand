@@ -38,7 +38,7 @@ namespace LemonadeStandProject
         public static void UserDisplay(Player player, Day days)
         {
             Console.WriteLine(player.userName + "'s Lemonade Stand\n" +
-                "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition + "\n");
+                "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition);
         }
         public static void InventoryDisplay(Player player)
         {
@@ -66,9 +66,10 @@ namespace LemonadeStandProject
             Console.WriteLine("End of day Results:\n" +
                "Todays Profit/Loss: " + (enddaysMoney - begindaysMoney)+"\n" +
                "Total Profit/Loss: " + (player.wallet.Money - 20) +"\n" +
-               "Customers: "+ servedCustomers + "out of " + day.customers.Count+ "\n\n " +
+               "Customers: "+ servedCustomers + " out of " + day.customers.Count+ "\n\n " +
                "Press Enter to continue to next day");
             Console.ReadLine();
+            Console.Clear();
         }
     }
 }

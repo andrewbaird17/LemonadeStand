@@ -69,6 +69,7 @@ namespace LemonadeStandProject
             do
             {
                 UserInterface.UserDisplay(player, days[i]);
+                Console.WriteLine("Day: " + (i + 1) + "\n");
                 UserInterface.CostDisplay(player);
                 UserInterface.InventoryDisplay(player);
                 UserInterface.RecipeDisplay(player);
@@ -126,7 +127,7 @@ namespace LemonadeStandProject
                 "2. Sugar Cube - Cost 0.10 per Sugar Cube\n" +
                 "3. Cups - Cost 0.05 per Cup \n" +
                 "4. Ice Cube - Cost 0.01 per Ice Cube \n" +
-                "5. Exit back to ");
+                "5. Exit back to Main Menu");
             switch (Console.ReadLine().ToLower())
             {
                 case "1":
