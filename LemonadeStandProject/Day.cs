@@ -13,16 +13,34 @@ namespace LemonadeStandProject
         public Weather weather;
         public int temperature;
         public int randomNumberOfCustomers;
+        public int numberOfDays;
         public List<Customer> customers;
+
         List<Weather> listOfWeather;
         //Constructor
         public Day(Random random)
         {
             customers = new List<Customer>();
             this.random = random;
-            listOfWeather = new List<Weather> { new Foggy(), new Cloudy(), new Hazy(), new Overcast(), new Rainy(), new Sunny(), new Windy()}; 
+            ChooseCondition();
+            ChooseTemp();
+            ChooseNumberOfCustomers();
         }
         //Member Methods (CAN DO)
+        public int SelectNumberDays()
+        {
+            Console.WriteLine("How many days would you like to run your Lemonade Stand for?");
+            Int32.TryParse(Console.ReadLine(), out int numberOfDays);
+            if (numberOfDays < 7)
+            {
+                Console.Clear();
+                Console.WriteLine("Please try again. Your input is not a valid option. Minimum game length is 7 days.\n\n");
+
+                return SelectNumberDays();
+            }
+            Console.Clear();
+            return numberOfDays;
+        }
         public void ChooseNumberOfCustomers()
         {           
             randomNumberOfCustomers = random.Next(weather.lowestNumCustomers, weather.highestNumCustomers);
@@ -34,6 +52,16 @@ namespace LemonadeStandProject
         public void ChooseTemp()
         {           
             temperature = random.Next(40, 115);
+        }
+        public void WeatherForecast(List <Day>days)
+        {
+            Console.Clear();
+            for (int i = 0; i < numberOfDays; i++)
+            {
+                Console.WriteLine("Day " + (i + 1) + ": High Temperature of " + days[i].temperature + " and " + days[i].weather.condition + "\n\n");
+            }
+            Console.WriteLine("Press enter to go back to the main screen.");
+            Console.ReadLine();
         }
         public void CreateCustomers(Player player)
         {
@@ -103,5 +131,6 @@ namespace LemonadeStandProject
                 }
             }
         }
+
     }
 }

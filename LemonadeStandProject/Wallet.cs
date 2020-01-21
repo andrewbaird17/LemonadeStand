@@ -9,12 +9,10 @@ namespace LemonadeStandProject
     public class Wallet
     {
         //Member Variables (HAS A)
-        double money;
         public double Money;
         //Constructor
         public Wallet()
         {
-            money = 20;
             Money = 20;
         }
         //Member Methods (CAN DO)
