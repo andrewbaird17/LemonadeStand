@@ -24,56 +24,54 @@ namespace LemonadeStandProject
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.lemon.purchasePrice * numberOfItems;
-            AddLemonsToInventory(numberOfItems, player);
+            //AddLemonsToInventory(numberOfItems, player);
             return saleCost;
-        }
-        public void AddLemonsToInventory(int numberOfItems, Player player)
-        {
-            for (int i = 0; i < numberOfItems; i++)
-            {
-                player.inventory.lemons.Add(new Lemon());
-            }
         }
         public double SellSugar(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.sugarcube.purchasePrice * numberOfItems;
-            AddSugarToInventory(numberOfItems, player);
+            //AddSugarToInventory(numberOfItems, player);
             return saleCost;
-        }
-        public void AddSugarToInventory(int numberOfItems, Player player)
-        {
-            for (int i = 0; i < numberOfItems; i++)
-            {
-                player.inventory.sugarCubes.Add(new SugarCube());
-            }
         }
         public double SellIce(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.icecube.purchasePrice * numberOfItems;
-            AddIceToInventory(numberOfItems, player);
+            //AddIceToInventory(numberOfItems, player);
             return saleCost;
-        }
-        public void AddIceToInventory(int numberOfItems, Player player)
-        {
-            for (int i = 0; i < numberOfItems; i++)
-            {
-                player.inventory.icecubes.Add(new IceCube());
-            }
         }
         public double SellCups(Player player)
         {
             NumberItemsToPurchase();
             saleCost = storeInventory.cup.purchasePrice * numberOfItems;
-            AddCupToInventory(numberOfItems, player);
+            //AddCupToInventory(numberOfItems, player);
             return saleCost;
         }
-        public void AddCupToInventory(int numberOfItems, Player player)
+        public void AddItemsToInventory(int numberOfItems, Player player, string itemPurchase)
         {
             for (int i = 0; i < numberOfItems; i++)
             {
-                player.inventory.cups.Add(new Cup());
+                if(itemPurchase == "lemon")
+                {
+                    player.inventory.lemons.Add(new Lemon());
+                }
+                else if (itemPurchase == "sugar")
+                {
+                    player.inventory.sugarCubes.Add(new SugarCube());
+                }
+                else if (itemPurchase == "cup")
+                {
+                    player.inventory.cups.Add(new Cup());
+                }
+                else if (itemPurchase == "ice")
+                {
+                    player.inventory.icecubes.Add(new IceCube());
+                }
+                else
+                {
+                    break;
+                }
             }
         }
         public void NumberItemsToPurchase()

@@ -38,7 +38,7 @@ namespace LemonadeStandProject
         }
         public void ChooseYourUserName()
         {
-            Console.WriteLine("Enter your Name.");
+            Console.WriteLine("Enter your Name:");
             userName = Console.ReadLine();
             Console.Clear();
         }

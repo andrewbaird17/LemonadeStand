@@ -14,7 +14,10 @@ namespace LemonadeStandProject
         List<Day> days;
         Store store;
         int numberOfDays;
-        public int servedCustomers;
+        int servedCustomers;
+        double begindaysMoney;
+        double enddaysMoney;
+        public string itemPurchase;
 
         //Constructor
         public Game()
@@ -72,10 +75,14 @@ namespace LemonadeStandProject
                 UserChoices();            
                 StartDay();
                 days[i].CreateCustomers(player);
+                begindaysMoney = player.wallet.Money;
                 RunDaySimulation(i);
-                UserInterface.EndOfDayDisplay(player, days[i], servedCustomers);
+                enddaysMoney = player.wallet.Money;
+                UserInterface.EndOfDayDisplay(player, days[i], servedCustomers, begindaysMoney, enddaysMoney);
                 i++;
+                servedCustomers = 0;
             } while (i < numberOfDays);
+            // End of Game Results
         }
         public void CreateLengthOfGame()
         {
@@ -109,7 +116,7 @@ namespace LemonadeStandProject
             UserInterface.InventoryDisplay(player);
             saleCost = Shopping();
             CreditCheck(saleCost);
-            StorePurchase(saleCost);
+            
         }
         public double Shopping()
         {
@@ -128,6 +135,7 @@ namespace LemonadeStandProject
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
                     saleCost = store.SellLemons(player);
+                    itemPurchase = "lemon";
                     return saleCost;
                 case "2":
                 case "sugar":
@@ -135,6 +143,7 @@ namespace LemonadeStandProject
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
                     saleCost = store.SellSugar(player);
+                    itemPurchase = "sugar";
                     return saleCost;
 
                 case "3":
@@ -143,6 +152,7 @@ namespace LemonadeStandProject
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
                     saleCost = store.SellCups(player);
+                    itemPurchase = "cup";
                     return saleCost;
 
                 case "4":
@@ -150,10 +160,12 @@ namespace LemonadeStandProject
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
                     saleCost = store.SellIce(player);
+                    itemPurchase = "ice";
                     return saleCost;
                 case "5":
                 case "exit":
                     saleCost = 0;
+                    itemPurchase = "";
                     return saleCost;
                 default:
                     Console.Clear();
@@ -172,6 +184,10 @@ namespace LemonadeStandProject
                     "This costs $" + saleCost + ", you only have $" + player.wallet.Money + "remaining.\n\n");
                 ContinueShopping();
             }
+            else
+            {
+                StorePurchase(saleCost);
+            }
 
         }
         public void StorePurchase(double saleCost)
@@ -179,6 +195,7 @@ namespace LemonadeStandProject
             Console.Clear();
             Console.WriteLine("Your total comes to $" + saleCost + "!\n");
             player.wallet.Money -= saleCost;
+            store.AddItemsToInventory(store.numberOfItems, player, itemPurchase);
             Console.WriteLine("You have $" + player.wallet.Money + " remaining.");
             ContinueShopping();
         }
@@ -249,7 +266,7 @@ namespace LemonadeStandProject
         }
         public void StartDay()
         {
-            Console.WriteLine("Would you like to start selling?");
+            Console.WriteLine("Would you like to start selling?\n1) Yes\n2) No");
             switch (Console.ReadLine().ToLower())
             {
                 case "1":
@@ -278,7 +295,7 @@ namespace LemonadeStandProject
             Console.ReadLine();
         }
         public void RunDaySimulation(int i)
-        {   
+        {
             for (int j = 0; j < days[i].randomNumberOfCustomers; j++)
             {
                 if (days[i].customers[j].chanceToBuy > 70)
@@ -288,7 +305,7 @@ namespace LemonadeStandProject
                     player.wallet.Money += player.recipe.pricePerCup;
                     servedCustomers += 1;
                 }
-                
+
             }
         }
     }

@@ -15,7 +15,7 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public static void StartScreen()
         {
-            Console.WriteLine("Welcome your Lemonaid Stand!\n\nPlease press enter to continue to the main menu!");
+            Console.WriteLine("Welcome your Lemonade Stand!\n\nPlease press enter to continue to the main menu!");
             Console.ReadLine();
         }
         public static void Instructions()
@@ -37,7 +37,7 @@ namespace LemonadeStandProject
         }
         public static void UserDisplay(Player player, Day days)
         {
-            Console.WriteLine(player.userName + "'s Lemonaid Stand\n" +
+            Console.WriteLine(player.userName + "'s Lemonade Stand\n" +
                 "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition + "\n");
         }
         public static void InventoryDisplay(Player player)
@@ -61,10 +61,10 @@ namespace LemonadeStandProject
         {
             Console.WriteLine("Current Cost per Cup: $" + player.recipe.pricePerCup);
         }
-        public static void EndOfDayDisplay(Player player, Day day, int servedCustomers)
+        public static void EndOfDayDisplay(Player player, Day day, int servedCustomers, double begindaysMoney, double enddaysMoney)
         {
             Console.WriteLine("End of day Results:\n" +
-               "Todays Profit/Loss: " + "\n" +
+               "Todays Profit/Loss: " + (enddaysMoney - begindaysMoney)+"\n" +
                "Total Profit/Loss: " + (player.wallet.Money - 20) +"\n" +
                "Customers: "+ servedCustomers + "out of " + day.customers.Count+ "\n\n " +
                "Press Enter to continue to next day");
