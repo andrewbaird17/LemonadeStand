@@ -29,6 +29,7 @@ namespace LemonadeStandProject
             if (pitcher.cupsLeftInPitcher >= 1)
             {
                 pitcher.PourGlassOfLemonaid();
+                SubtractCupsFromInventory();
             }
             else
             {
@@ -67,6 +68,10 @@ namespace LemonadeStandProject
                 Console.ReadLine();
                 //ADD end of day operation or not maybe
             }
+        }
+        public void SubtractCupsFromInventory()
+        {
+                inventory.cups.RemoveAt(0);
         }
         public void SubtractLemonsFromInventory()
         {
