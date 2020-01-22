@@ -142,12 +142,18 @@ namespace LemonadeStandProject
         public void ContinueShopping(Player player)
         {
             Console.WriteLine("Would you like to continue Shopping?\n1. Yes\n2. No");
-            string UserInput = Console.ReadLine().ToLower();
-            while ((UserInput == "1") || (UserInput == "yes"))
+            switch (Console.ReadLine().ToLower())
             {
-                GoToTheStore(player);      
+                case "1":
+                case "yes":
+                    GoToTheStore(player);
+                    break;
+                case "2":
+                case "no":
+                    break;
+                default:
+                    break;
             }
-   
         }
         public void GoToTheStore(Player player)
         {

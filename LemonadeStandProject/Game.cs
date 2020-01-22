@@ -73,6 +73,8 @@ namespace LemonadeStandProject
                 i++;
                 servedCustomers = 0;
             } while (i < numberOfDays);
+            Console.Clear();
+            UserInterface.EndOfGameDisplay(player);
         }
         public int CreateLengthOfGame()
         {

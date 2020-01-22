@@ -80,11 +80,19 @@ namespace LemonadeStandProject
         {
             Console.WriteLine("End of day Results:\n" +
                "Todays Profit/Loss: " + decimal.Round(Convert.ToDecimal(enddaysMoney - begindaysMoney), 2)+"\n" +
-               "Total Profit/Loss: " + decimal.Round(Convert.ToDecimal(player.wallet.Money - 20),2) +"\n" +
+               "Total Profit/Loss: " + decimal.Round((Convert.ToDecimal(player.wallet.Money - 20)),2) +"\n" +
                "Customers: "+ servedCustomers + " out of " + day.customers.Count+ "\n\n " +
                "Press Enter to continue to next day");
             Console.ReadLine();
             Console.Clear();
+        }
+        public static void EndOfGameDisplay(Player player)
+        {
+            Console.WriteLine("Congratulations you have made it the the end of running your lemonade stand!\n" +
+                "Let's find out how you did:\n" +
+                "Total Profit/Loss: " + (decimal.Round((Convert.ToDecimal(player.wallet.Money - 20)), 2)) + "\n" +
+                "Press Enter to exit the Game");
+            Console.ReadLine();
         }
     }
 }
