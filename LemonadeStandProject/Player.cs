@@ -150,38 +150,41 @@ namespace LemonadeStandProject
             recipe.ChangeAmountOfSugarCubes();
             recipe.ChangeAmountOfIceCubes();
         }
-        public void ContinueShopping(Player player)
+        public void GoToTheStore(Player player)
+        {
+            Console.Clear();
+            bool continueShopping = true;
+            do
+            {
+                Console.Clear();
+                UserInterface.InventoryDisplay(player);
+                Shopping(player);
+                continueShopping = ContinueShopping();
+            }
+            while (continueShopping == true);
+        }
+        public bool ContinueShopping()
         {
             Console.WriteLine("Would you like to continue Shopping?\n1. Yes\n2. No");
             switch (Console.ReadLine().ToLower())
             {
                 case "1":
+                case "y":
                 case "yes":
-                    GoToTheStore(player);
-                    break;
-                case "2":
-                case "no":
-                    break;
+                    return true;
                 default:
-                    break;
+                    return false;
+                    
             }
         }
-        public void GoToTheStore(Player player)
-        {
-            Console.Clear();
-            double saleCost;
-            UserInterface.InventoryDisplay(player);
-            saleCost = Shopping(player);
-            distributor.CreditCheck(saleCost, player);
-        }
-        public double Shopping(Player player)
+        public void Shopping(Player player)
         {
             double saleCost;
             Console.WriteLine("What would you like to buy:\n" +
-                "1. Lemons - Cost 0.25 per lemon\n" +
+                "1. Lemon - Cost 0.25 per lemon\n" +
                 "2. Sugar Cube - Cost 0.10 per Sugar Cube\n" +
-                "3. Cups - Cost 0.05 per Cup \n" +
-                "4. Ice Cube - Cost 0.01 per Ice Cube \n" +
+                "3. Ice Cube - Cost 0.01 per Ice Cube \n" +
+                "4. Cup - Cost 0.05 per Cup \n" +
                 "5. Exit back to Main Menu");
             switch (Console.ReadLine().ToLower())
             {
@@ -191,40 +194,33 @@ namespace LemonadeStandProject
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
                     saleCost = distributor.SellLemons(player);
-                    return saleCost;
+                    distributor.CreditCheck(saleCost, player);
+                    break;
                 case "2":
                 case "sugar":
                 case "sugar cubes":
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
                     saleCost = distributor.SellSugar(player);
-                    return saleCost;
-
+                    distributor.CreditCheck(saleCost, player);
+                    break;
                 case "3":
                 case "cups":
                 case "cup":
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
                     saleCost = distributor.SellCups(player);
-                    return saleCost;
-
+                    distributor.CreditCheck(saleCost, player);
+                    break;
                 case "4":
                 case "ice":
                     Console.Clear();
                     UserInterface.InventoryDisplay(player);
                     saleCost = distributor.SellIce(player);
-                    return saleCost;
-                case "5":
-                case "exit":
-                    ContinueShopping(player);
-                    saleCost = 0;
-                    return saleCost;
+                    distributor.CreditCheck(saleCost, player);
+                    break;
                 default:
-                    Console.Clear();
-                    Console.WriteLine("Try using just the number associated with the choice!");
-                    ContinueShopping(player);
-                    saleCost = 0;
-                    return saleCost;
+                    break;
             }
         }
     }

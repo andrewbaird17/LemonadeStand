@@ -21,9 +21,9 @@ namespace LemonadeStandProject
         public Game()
         {
             random = new Random();
-            day = new Day(random);
-            days = new List<Day>();
             player = new Player();
+            day = new Day(random, player);
+            days = new List<Day>();
             store = new Store();
             servedCustomers = 0;
         }
@@ -31,66 +31,49 @@ namespace LemonadeStandProject
         public void StartGame()
         {
             UserInterface.StartScreen();
-            MainMenu();
+            UserInterface.Instructions();
+            GameSetUp();
         }
-        public void MainMenu()
+        public void GameSetUp()
         {
             Console.Clear();
-            Console.WriteLine("Please select from the following options:\n1:Start Game\n2:Instructions");
-            switch (Console.ReadLine())
-            {
-                case "1":
-                case "start":
-                case "start game":
-                case "game":
-                    RunGame();
-                    break;
-                case "2":
-                case "instructions":
-                case "instruct":
-                    UserInterface.Instructions();
-                    MainMenu();
-                    break;
-                default:
-                    Console.Clear();
-                    Console.WriteLine("That is not a valid choice.\n\n");
-                    MainMenu();
-                    break;
-            }
+            player.ChooseYourUserName();
+            CreateLengthOfGame();
+            RunGame();
         }
         public void RunGame()
         {
-            int i = 0;
-            Console.Clear();
-            player.ChooseYourUserName();
-            int numberOfDays = CreateLengthOfGame();
-            do
+            foreach (Day today in days)
             {
-                UserInterface.BeginningDayDisplay(player, days[i], i);
-                UserChoices();
-                StartDay();
-                days[i].CreateCustomers(player);
+                bool continueUserChoices = true;
+                UserInterface.BeginningDayDisplay(player, today);
+
+                do
+                {
+                    UserChoices();
+                }
+                while (continueUserChoices == true);
+
                 begindaysMoney = player.wallet.Money;
-                RunDaySimulation(i);
+                RunDaySimulation();
                 enddaysMoney = player.wallet.Money;
-                UserInterface.EndOfDayDisplay(player, days[i], servedCustomers, begindaysMoney, enddaysMoney);
-                i++;
+                UserInterface.EndOfDayDisplay(player, today, servedCustomers, begindaysMoney, enddaysMoney);
                 servedCustomers = 0;
-            } while (i < numberOfDays);
+            }
             Console.Clear();
             UserInterface.EndOfGameDisplay(player);
         }
-        public int CreateLengthOfGame()
+        public void CreateLengthOfGame()
         {
             int numberOfDays = day.SelectNumberDays();
             for (int i = 0; i < numberOfDays; i++)
             {
-                days.Add(new Day(random));
+                days.Add(new Day(random, player));
             }
-            return numberOfDays;
         }
-        public void UserChoices()
+        public bool UserChoices()
         {
+            
             Console.WriteLine("What would you like to do?\n1: Go to Store\n2: See Week's Forecast\n3: Change Recipe\n4: Open Lemonade Stand");
             switch (Console.ReadLine().ToLower())
             {
@@ -132,32 +115,27 @@ namespace LemonadeStandProject
                     Console.WriteLine("Please Try Entering the number associated with the option you would like to do.");
                     break;
             }
+            bool continueUserChoices = ContinueUserChoices();
+            return continueUserChoices;
         }
-        public void StartDay()
+        public bool ContinueUserChoices()
         {
-            Console.WriteLine("Would you like to start selling?\n1) Yes\n2) No");
+            Console.WriteLine("Would you like to start your day?\n1) Yes\n2) No\n\nOnce you start your day you can no longer change receipe, aquire more products, or change your price!");
             switch (Console.ReadLine().ToLower())
             {
                 case "1":
+                case "y":
                 case "yes":
-                    break;
-                case "2":
-                case "no":
-                    Console.Clear();
-                    UserChoices();
-                    break;
+                    return true;
                 default:
-                    Console.Clear();
-                    Console.WriteLine("Please try entering only the number associated with your choice.");
-                    StartDay();
-                    break;
+                    return false;
             }
         }
-        public void RunDaySimulation(int i)
+        public void RunDaySimulation()
         {
-            for (int j = 0; j < days[i].randomNumberOfCustomers; j++)
+            foreach (Customer customer in day.customers)
             {
-                if (days[i].customers[j].chanceToBuy > 70)
+                if (customer.chanceToBuy > 70)
                 {
                     Console.Clear();
                     if (player.SellGlassOfLemonaid() == true)

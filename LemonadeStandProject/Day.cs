@@ -16,13 +16,14 @@ namespace LemonadeStandProject
         public int randomNumberOfCustomers;
         public int numberOfDays;
         public List<Customer> customers;
-        public Day(Random random)
+        public Day(Random random, Player player)
         {
             this.random = random;
             customers = new List<Customer>();
             ChooseCondition();
             ChooseTemp();
             ChooseNumberOfCustomers();
+            CreateCustomers(player);
         }
         //Member Methods (CAN DO)
         public int SelectNumberDays()

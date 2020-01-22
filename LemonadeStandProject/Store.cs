@@ -66,10 +66,6 @@ namespace LemonadeStandProject
                 {
                     player.inventory.icecubes.Add(new IceCube());
                 }
-                else
-                {
-                    break;
-                }
             }
         }    
         public int NumberItemsToPurchase()
@@ -83,8 +79,7 @@ namespace LemonadeStandProject
             {
                 Console.Clear();
                 Console.WriteLine("CARD DECLINED!\n" +
-                    "This costs $" + saleCost + ", you only have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money), 2) + " remaining.\n\n");
-                player.ContinueShopping(player);
+                    "This costs $" + saleCost + ", you only have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money), 2) + " remaining.\n\n");              
             }
             else
             {
@@ -99,7 +94,6 @@ namespace LemonadeStandProject
             player.wallet.Money -= saleCost;
             ItemAquiredByPlayer(numberOfItems, player, itemPurchased);
             Console.WriteLine("You have $" + decimal.Round(Convert.ToDecimal(player.wallet.Money), 2) + " remaining.");
-            player.ContinueShopping(player);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace LemonadeStandProject
         //Member Methods (CAN DO)
         public static void StartScreen()
         {
-            Console.WriteLine("Welcome your Lemonade Stand!\n\nPlease press enter to continue to the main menu!");
+            Console.WriteLine("Welcome your Lemonade Stand!\n\nPlease press enter to continue!");
             Console.ReadLine();
         }
         public static void Instructions()
@@ -32,7 +32,7 @@ namespace LemonadeStandProject
                 "\n" +
                 "Keep in mind that the weather, your prices, and recipe all greatly affect the customers choice to buy.\n" +
                 "Keep in mind the forecast given at the begining of each day, when making your purchases and changing your recipe!\n\n" +
-                "Press enter to go back to main menu.");
+                "Press enter to set up you game.");
             Console.ReadLine();
         }
         public static void UserDisplay(Player player, Day days)
@@ -51,11 +51,11 @@ namespace LemonadeStandProject
             //Console.WriteLine($"hello this is a variable {player.recipe}");
             Console.WriteLine(
             "You currently have: $" + player.wallet.Money + "\n\n" +
-            "Your Inventory: \n" +
-            "Cups: " + player.inventory.cups.Count() + "\n" +
+            "Your Inventory: \n" + 
             "Lemons: " + player.inventory.lemons.Count() + "\n" +
             "Sugar Cubes: " + player.inventory.sugarCubes.Count() + "\n" +
-            "Ice Cubes: " + player.inventory.icecubes.Count() + "\n");
+            "Ice Cubes: " + player.inventory.icecubes.Count() + "\n" +
+            "Cups: " + player.inventory.cups.Count() + "\n");
         }
         public static void RecipeDisplay(Player player)
         {
@@ -68,10 +68,10 @@ namespace LemonadeStandProject
         {
             Console.WriteLine("Current Cost per Cup: $" + Convert.ToDecimal(player.recipe.pricePerCup));
         }
-        public static void BeginningDayDisplay(Player player, Day days, int i)
+        public static void BeginningDayDisplay(Player player, Day days)
         {
             UserDisplay(player, days);
-            Console.WriteLine("Day: " + (i + 1) + "\n");
+            Console.WriteLine();
             CostDisplay(player);
             InventoryDisplay(player);
             RecipeDisplay(player);
