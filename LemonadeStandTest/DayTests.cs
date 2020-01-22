@@ -12,7 +12,7 @@ namespace LemonadeStandTest
         {
             //Arrange
             Random random = new Random();
-            Day day = new Day(random);
+            Day day = new Day(random,new Player());
             Weather weather2 = new Foggy();
             
             string expected = weather2.condition;
@@ -30,7 +30,7 @@ namespace LemonadeStandTest
         {
             //Arrange
             Random random = new Random();
-            Day day = new Day(random);
+            Day day = new Day(random, new Player());
             Weather weather = new Windy();
             string expected = weather.condition;
             string actual;
