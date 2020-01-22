@@ -45,7 +45,7 @@ namespace LemonadeStandProject
         }
         public void ChooseCondition()
         {
-            int randCondition = random.Next(0, 7);
+            int randCondition = UserInterface.GetRandomInteger(0, 7, random);
             switch (randCondition)
             {
                 case 0:
@@ -89,7 +89,7 @@ namespace LemonadeStandProject
         {
             for (int i = 0; i < randomNumberOfCustomers; i++)
             {
-                switch (random.Next(0, 3))
+                switch (UserInterface.GetRandomInteger(0,3,random))
                 {
                     case 0:
                         customer = new Child(random, player, temperature);

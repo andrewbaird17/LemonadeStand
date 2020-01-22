@@ -40,6 +40,11 @@ namespace LemonadeStandProject
             Console.WriteLine(player.userName + "'s Lemonade Stand\n" +
                 "Today's Forcast: High Temperature of " + days.temperature + " and " + days.weather.condition);
         }
+        public static int GetRandomInteger(int min, int max, Random random)
+        {
+            int randInteger = random.Next(min, max);
+            return randInteger;
+        }
         public static int GetUserInteger(string output)
         {
             Console.WriteLine(output);
