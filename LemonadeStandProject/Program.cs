@@ -11,7 +11,7 @@ namespace LemonadeStandProject
         static void Main(string[] args)
         { 
             Game game = new Game();
-            game.MainMenu();
+            game.StartGame();
         }
     }
 }

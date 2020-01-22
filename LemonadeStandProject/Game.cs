@@ -28,9 +28,13 @@ namespace LemonadeStandProject
             servedCustomers = 0;
         }
         //Member Methods (CAN DO)
-        public void MainMenu()
+        public void StartGame()
         {
             UserInterface.StartScreen();
+            MainMenu();
+        }
+        public void MainMenu()
+        {
             Console.Clear();
             Console.WriteLine("Please select from the following options:\n1:Start Game\n2:Instructions");
             switch (Console.ReadLine())
