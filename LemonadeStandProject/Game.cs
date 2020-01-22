@@ -50,7 +50,7 @@ namespace LemonadeStandProject
 
                 do
                 {
-                    UserChoices();
+                    continueUserChoices = UserChoices();
                 }
                 while (continueUserChoices == true);
 
@@ -126,9 +126,9 @@ namespace LemonadeStandProject
                 case "1":
                 case "y":
                 case "yes":
-                    return true;
-                default:
                     return false;
+                default:
+                    return true;
             }
         }
         public void RunDaySimulation()
