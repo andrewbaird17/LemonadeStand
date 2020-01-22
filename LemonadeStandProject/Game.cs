@@ -47,7 +47,7 @@ namespace LemonadeStandProject
             {
                 bool continueUserChoices = true;
                 UserInterface.BeginningDayDisplay(player, today);
-
+ 
                 do
                 {
                     UserChoices();
